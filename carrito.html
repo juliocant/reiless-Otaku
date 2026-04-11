@@ -1,360 +1,170 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reiless | Personaliza tu mundo con estilo </title>
+  <title>Reiless | Carrito</title>
   <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    /* Small, focused overrides to align carrito visuals with site */
+    .carrito-wrapper { padding: 2.5rem 1rem; }
+    .carrito-inner { max-width: 1100px; margin: 0 auto; background: rgba(255,255,255,0.9); padding: 1.25rem; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+    .item-carrito { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .item-left { display:flex; gap:1rem; align-items:center; }
+    .item-carrito img { width: 84px; height:84px; object-fit:cover; border-radius:8px; }
+    .item-nombre { font-weight:700; margin:0; }
+    .item-meta { color:#666; font-size:0.95rem; margin-top:6px; }
+    .item-actions { display:flex; align-items:center; gap:0.5rem; }
+    .btn-eliminar { background:#e53935; border:none; color:#fff; padding:0.5rem 0.75rem; border-radius:10px; cursor:pointer; }
+    .btn-eliminar:hover{ opacity:0.95 }
+    .total { font-size:1.25rem; font-weight:700; text-align:right; margin-top:1rem; }
+  </style>
 </head>
 <body>
 
   <header>
-    <div class="logo"><img src="img/logo.png" alt="Reiless Logo"></div>
+    <div class="logo"><a href="index.html"><img src="img/logo.png" alt="Reiless Logo"></a></div>
     <button id="nav-toggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
       <span class="hamburger" aria-hidden="true"></span>
     </button>
     <nav>
       <ul>
-        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="index.html">Inicio</a></li>
         <li><a href="tienda.html">Tienda</a></li>
-        <li><a href="#sobre">Sobre Nosotros</a></li>
+        <li><a href="carrito.html">Carrito</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
-    <button id="carrito-header-btn" aria-label="Ver carrito" style="background: none; border: none; cursor: pointer; position: relative; margin-left: 1rem; font-size: 1.5rem;">
-      <span aria-hidden="true">🛒</span>
-      <span id="contador-carrito" style="position: absolute; top: -8px; right: -8px; background: #e53935; color: #fff; border-radius: 50%; padding: 2px 6px; font-size: 0.8rem; min-width: 20px; text-align: center;">0</span>
-    </button>
   </header>
 
-  <!-- Vista previa del carrito accesible -->
-  <aside id="vista-previa-carrito" aria-label="Vista previa del carrito" style="display: none; position: fixed; top: 70px; right: 10px; background: #fff; border: 1px solid #ccc; border-radius: 8px; padding: 15px; width: 90vw; max-width: 340px; z-index: 1001; box-shadow: 0 0 10px rgba(0,0,0,0.2); transition: all 0.3s;">
-    <h3 style="margin-top: 0;">Carrito</h3>
-    <ul id="lista-carrito" style="list-style:none; padding:0; margin:0; max-height: 200px; overflow-y:auto;"></ul>
-    <a href="carrito.html" style="display: block; margin-top: 10px; padding: 8px 12px; background: #000; color: #fff; text-align: center; border-radius: 5px; text-decoration: none;">Ver carrito completo</a>
-    <button id="cerrar-carrito" aria-label="Cerrar carrito" style="position: absolute; top: 8px; right: 8px; background: none; border: none; font-size: 1.2rem; cursor: pointer;">&times;</button>
-  </aside>
+  <main class="carrito-wrapper">
+    <div class="carrito-inner">
+      <h1 style="margin-top:0;">Tu carrito</h1>
+      <p style="margin-top:0.25rem; color:#556;">Revisa los productos seleccionados antes de finalizar tu compra.</p>
 
-  <section id="inicio" class="hero">
-    <h1>Tu Carrito de Compras</h1>
-    <p>Revisa los productos que añadiste.</p>
-    <main style="padding:20px; max-width:1100px; margin: 0 auto;">
-      <ul id="carrito-completo" style="list-style:none; padding:0; margin:0 0 1rem 0;"></ul>
-      <div style="margin-top:12px; display:flex; gap:8px;">
-        <button id="vaciar-carrito-btn" style="padding:10px 15px; background:red; color:white; border:none; border-radius:5px;">Vaciar Carrito</button>
-        <a href="tienda.html" class="boton" style="align-self:center;">Seguir comprando</a>
-      </div>
-    </main>
-  </section>
+      <div id="carrito-items" aria-live="polite" style="margin-top:1rem;"></div>
 
-  <section id="camisetas" class="productos">
-    <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-      <h2>Camisetas Anime</h2>
-      <a href="camisas.html" class="boton">Ver más</a>
-    </div>
-    <div class="carousel-wrap">
-      <button class="carousel-nav prev" aria-label="Anterior">‹</button>
-      <div class="carousel" aria-label="Carrusel de camisetas" data-autoplay="true" data-autoplay-interval="3500">
-      <div class="producto">
-        <a href="/gojo.html" class="enlacecamisas"> 
-          <img src="/img/Camiseta jjk/Gojo1.jpg" alt="Camiseta Gojo Satoru">
-          <h3>Camiseta Gojo</h3>
-          <p>Diseño exclusivo inspirado en Gojo Satoru de Jujutsu Kaisen.</p>
-        </a>
-        <div class="producto-precio-boton-col">
-          <span>C$450</span>
-          <a href="#" class="agregar-carrito" data-producto="Camiseta Gojo">Agregar al carrito</a>
-        </div>
-      </div>
-      <div class="producto">
-        <a href="/itadori.html" class="enlacecamisas">
-          <img src="/img/Camiseta jjk/itadori1.jpg" alt="Camiseta Itadori Yuji">
-          <h3>Camiseta Itadori</h3>
-          <p>Camiseta llena de energía con el protagonista de Jujutsu Kaisen.</p>
-        </a>
-        <div class="producto-precio-boton-col">
-          <span>C$450</span>
-          <a href="#" class="agregar-carrito" data-producto="Itadori Yuji">Agregar al carrito</a>
-        </div>
-      </div>
-      <div class="producto">
-        <a href="/geto.html" class="enlacecamisas">
-          <img src="/img/Camiseta jjk/geto1.jpg" alt="Camiseta Geto Suguru">
-          <h3>Camiseta Geto</h3>
-          <p>Diseño oscuro y poderoso de Geto para fans intensos.</p>
-        </a>
-        <div class="producto-precio-boton-col">
-          <span>C$450</span>
-          <a href="#" class="agregar-carrito" data-producto="Camiseta Geto">Agregar al carrito</a>
-        </div>
-      </div>
-      <div class="producto">
-        <a href="sukuna.html" class="enlacecamisas">
-          <img src="/img/Camiseta jjk/sukuna1.jpg" alt="Camiseta Sukuna">
-          <h3>Camiseta Sukuna</h3>
-          <p>Desata el lado más oscuro y poderoso de Jujutsu Kaisen con esta camiseta de Sukuna. Perfecta para quienes aman la fuerza y el misterio del Rey de las Maldiciones.</p>
-        </a>
-        <div class="producto-precio-boton-col">
-          <span>C$450</span>
-          <a href="#" class="agregar-carrito" data-producto="Camiseta Sukuna">Agregar al carrito</a>
-        </div>
-      </div>
-      <!-- Productos adicionales visibles al deslizar -->
-      <div class="producto">
-        <a href="camisas.html" class="enlacecamisas">
-          <img src="/img/Camiseta jjk/16.jpg" alt="Camiseta JJk 16">
-          <h3>Camiseta JJk 16</h3>
-          <p>Diseño alternativo, edición limitada.</p>
-        </a>
-        <div class="producto-precio-boton-col">
-          <span>C$450</span>
-          <a href="#" class="agregar-carrito" data-producto="Camiseta JJk 16">Agregar al carrito</a>
-        </div>
-      </div>
-      <div class="producto">
-        <a href="camisas.html" class="enlacecamisas">
-          <img src="/img/Camiseta jjk/2.jpg" alt="Camiseta JJk 2">
-          <h3>Camiseta JJk 2</h3>
-          <p>Estampa clásica para fans del anime.</p>
-        </a>
-        <div class="producto-precio-boton-col">
-          <span>C$450</span>
-          <a href="#" class="agregar-carrito" data-producto="Camiseta JJk 2">Agregar al carrito</a>
-        </div>
-      </div>
-      <div class="producto">
-        <a href="camisas.html" class="enlacecamisas">
-          <img src="/img/Camiseta jjk/4.jpg" alt="Camiseta JJk 4">
-          <h3>Camiseta JJk 4</h3>
-          <p>Estilo minimalista con detalles del anime.</p>
-        </a>
-        <div class="producto-precio-boton-col">
-          <span>C$450</span>
-          <a href="#" class="agregar-carrito" data-producto="Camiseta JJk 4">Agregar al carrito</a>
-        </div>
-      </div>
-      </div>
-      <button class="carousel-nav next" aria-label="Siguiente">›</button>
-    </div>
-  </section>
+      <div class="total" id="total">Total: C$0</div>
 
-  <!-- rest of index content remains unchanged... -->
-
-  <section id="figuras" class="productos">
-    <h2>Figuras coleccionables</h2>
-    <div class="grid-productos">
-      <div class="producto">
-        <img src="/img/Figuras/gojo.jpg" alt="Figura Satoru Gojo Crochet" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f9e9.svg';">
-        <h3>Satoru Gojo Crochet</h3>
-        <p>Figura tejida a mano de Satoru Gojo, perfecta para fans de Jujutsu Kaisen que buscan un toque tierno y único en su colección.</p>
-        <span>C$1500</span>
-        <a href="figuras.html" class="boton">Ver más</a>
-      </div>
-      <div class="producto">
-        <img src="/img/Figuras/luffy.jpg" alt="Figura Luffy Crochet" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f9e9.svg';">
-        <h3>Luffy Crochet</h3>
-        <p>Figura artesanal de Luffy de One Piece en versión crochet, ideal para coleccionistas y amantes del anime.</p>
-        <span>C$1500</span>
-        <a href="figuras.html" class="boton">Ver más</a>
-      </div>
-      <div class="producto">
-        <img src="/img/Figuras/gengar.jpg" alt="Figura Gengar" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f47b.svg';">
-        <h3>Gengar</h3>
-        <p>Figura de Gengar, el icónico Pokémon fantasma, con acabado brillante y detalles fieles al personaje.</p>
-        <span>C$1000</span>
-        <a href="figuras.html" class="boton">Ver más</a>
-      </div>
-      <div class="producto">
-        <img src="/img/Figuras/hollow.jpg" alt="Figura Hollow Knight" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f47e.svg';">
-        <h3>Hollow Knight</h3>
-        <p>Mini figura de Hollow Knight, ideal para decorar tu escritorio o estantería gamer.</p>
-        <span>C$300</span>
-        <a href="figuras.html" class="boton">Ver más</a>
+      <div style="display:flex; gap:0.75rem; justify-content:flex-end; margin-top:1rem;">
+        <button id="vaciar-carrito-btn" class="boton" style="background:#e53935; border-radius:12px;">Vaciar carrito</button>
+        <a href="tienda.html" class="boton">Seguir comprando</a>
+        <button id="realizar-pedido-btn" class="boton" style="background:#25D366; color:#fff; border-radius:12px;">Realizar pedido</button>
       </div>
     </div>
-  </section>
+  </main>
 
-  <section id="camisetas" class="productos">
-    <h2>Camisetas destacadas</h2>
-    <div class="grid-productos">
-      <!-- ...camisetas existentes... -->
-    </div>
-  </section>
-
-  <section id="hoddies" class="productos">
-    <h2>Hoddies destacados</h2>
-    <div class="grid-productos">
-      <div class="producto">
-        <img src="/img/Hoddies/lol.jpg" alt="Hoodie lol" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f455.svg';">
-        <h3>Hoodie Lol</h3>
-        <p>Diseño inspirado en el personaje del video juego League of Legends.</p>
-        <span>C$880</span>
-        <a href="hoddies.html" class="boton">Ver más</a>
-      </div>
-      <div class="producto">
-        <img src="/img/Hoddies/onepiece.jpg" alt="Hoodie One Piece" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f455.svg';">
-        <h3>Hoodie Luffy</h3>
-        <p>Inspirado en el personaje de One Piece, ideal para fans.</p>
-        <span>C$880</span>
-        <a href="hoddies.html" class="boton">Ver más</a>
-      </div>
-      <div class="producto">
-        <img src="/img/Hoddies/hollow.jpg" alt="Hoodie Hollow Knight" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f408.svg';">
-        <h3>Hoodie Hollow Knight</h3>
-        <p>Estilo oscuro inspirado en el videojuego Hollow Knight.</p>
-        <span>C$880</span>
-        <a href="hoddies.html" class="boton">Ver más</a>
-      </div>
-      <div class="producto">
-        <img src="/img/Hoddies/atack.jpg" alt="Hoodie atack" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f455.svg';">
-        <h3>Hoodie atack on titan</h3>
-        <p>Hoodie inspirado en el anime Attack on Titan, con diseño único y detalles temáticos.</p>
-        <span>C$700</span>
-        <a href="hoddies.html" class="boton">Ver más</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="agendas" class="productos">
-    <h2>Agendas creativas</h2>
-    <div class="grid-productos">
-      <div class="producto">
-        <img src="/img/agendas/agenda-anime.jpg" alt="Agenda Anime" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4d3.svg';">
-        <h3>Agenda Anime</h3>
-        <p>Agenda semanal con portada de anime y frases motivadoras.</p>
-        <span>C$250</span>
-        <a href="#" class="boton">Ver detalle</a>
-      </div>
-      <div class="producto">
-        <img src="/img/agendas/agenda-universo.jpg" alt="Agenda Universo" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4d3.svg';">
-        <h3>Agenda Universo</h3>
-        <p>Diseño estelar para organizar tus metas del año.</p>
-        <span>C$270</span>
-        <a href="#" class="boton">Ver detalle</a>
-      </div>
-      <div class="producto">
-        <img src="/img/agendas/agenda-floral.jpg" alt="Agenda Floral" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4d3.svg';">
-        <h3>Agenda Floral</h3>
-        <p>Agenda con diseño primaveral y secciones de gratitud.</p>
-        <span>C$240</span>
-        <a href="#" class="boton">Ver detalle</a>
-      </div>
-      <div class="producto">
-        <img src="/img/agendas/agenda-gamer.jpg" alt="Agenda Gamer" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4d3.svg';">
-        <h3>Agenda Gamer</h3>
-        <p>Agenda temática para gamers, con stickers y extras.</p>
-        <span>C$260</span>
-        <a href="#" class="boton">Ver detalle</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="otros-productos" class="productos">
-    <h2>Todos los productos</h2>
-    <div class="grid-productos">
-      <div class="producto">
-        <img src="/img/llaveros/llavero-anime.jpg" alt="Llavero Anime" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f511.svg';">
-        <h3>Llavero Anime</h3>
-        <p>Llavero acrílico con personajes de anime populares.</p>
-        <span>C$90</span>
-        <a href="#" class="boton">Ver detalle</a>
-      </div>
-      <div class="producto">
-        <img src="/img/mamelucos/mameluco-pikachu.jpg" alt="Mameluco Pikachu" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f476.svg';">
-        <h3>Mameluco Pikachu</h3>
-        <p>Mameluco suave y divertido para niños y adultos.</p>
-        <span>C$480</span>
-        <a href="#" class="boton">Ver detalle</a>
-      </div>
-      <div class="producto">
-        <img src="/img/tazas/taza-anime.jpg" alt="Taza Anime" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2615.svg';">
-        <h3>Taza Anime</h3>
-        <p>Taza con diseño de personajes de anime y acabado brillante.</p>
-        <span>C$180</span>
-        <a href="#" class="boton">Ver detalle</a>
-      </div>
-      <div class="producto">
-        <img src="/img/totebags/totebag-anime.jpg" alt="Tote Bag Anime" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f45c.svg';">
-        <h3>Tote Bag Anime</h3>
-        <p>Bolso tote bag resistente con estampado de anime.</p>
-        <span>C$220</span>
-        <a href="#" class="boton">Ver detalle</a>
-      </div>
-    </div>
-  </section>
-
-  <div class="pdp">
-  <section id="sobre" class="sobre">
-    <h2>Sobre Reiless</h2>
-    <p>En Reiless creemos que la personalización es una forma de expresión. Diseñamos productos inspirados en lo que te gusta: desde personajes de anime hasta frases que cuentan tu historia.</p>
-  </section>
-  <section id="contacto" class="contacto">
-    <h2>Contacto</h2>
-    <form>
-      <input type="text" placeholder="Tu nombre" required>
-      <input type="email" placeholder="Tu correo" required>
-      <textarea placeholder="Escribinos un mensaje..."></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
-  </div>
-  <footer style="background: #0b2a42; color: #fff; padding: 2.5rem 1rem 1.2rem 1rem; margin-top: 3rem; border-radius: 18px 18px 0 0; box-shadow: 0 -2px 12px rgba(0,0,0,0.07);">
-    <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; align-items: flex-start;">
-      <div style="flex: 1 1 220px; min-width: 180px;">
-        <a href="#inicio"><img src="img/logo.png" alt="Reiless Logo" style="width: 120px; margin-bottom: 0.7rem;"> </a>
-        <p style="margin:0; font-size: 1rem; opacity: 0.85;">Reiless Otaku - Tienda de cultura pop y anime en Nicaragua.</p>
-      </div>
-      <nav aria-label="Enlaces útiles" style="flex: 1 1 180px; min-width: 150px;">
-        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
-          <li><a href="index.html" style="color: #fff; text-decoration: none; opacity: 0.95;">Inicio</a></li>
-          <li><a href="tienda.html" style="color: #fff; text-decoration: none; opacity: 0.95;">Tienda</a></li>
-          <li><a href="#contacto" style="color: #fff; text-decoration: none; opacity: 0.95;">Contacto</a></li>
-          <li><a href="https://instagram.com/reiless.ni" target="_blank" rel="noopener" style="color: #fff; text-decoration: none; opacity: 0.95;">Instagram</a></li>
-          <li><a href="https://wa.me/50577002788" target="_blank" rel="noopener" style="color: #fff; text-decoration: none; opacity: 0.95;">WhatsApp</a></li>
-        </ul>
-      </nav>
-      <div style="flex: 1 1 220px; min-width: 180px;">
-        <p style="margin:0; font-size: 1rem; opacity: 0.85;">¿Dudas? <a href="mailto:reilessshirt@gmail.com" style="color:#ffd600; text-decoration:underline;">reilessshirt@gmail.com</a></p>
-        <p style="margin:0.5rem 0 0 0; font-size: 1rem; opacity: 0.85;">Managua, Nicaragua</p>
-      </div>
-    </div>
-    <hr style="border: none; border-top: 1px solid #fff2; margin: 1.5rem 0 1rem 0;">
-    <p style="text-align: center; margin: 0; font-size: 0.98rem; opacity: 0.8;">&copy; <span id="anio-footer"></span> Reiless Otaku. Todos los derechos reservados.</p>
+  <footer>
+    <p>&copy; <span id="anio-footer"></span> Reiless. Todos los derechos reservados.</p>
     <script>document.getElementById('anio-footer').textContent = new Date().getFullYear();</script>
   </footer>
 
-  <!-- Botón flotante de WhatsApp -->
-  <a href="https://wa.me/50577002788" class="whatsapp-float" target="_blank" title="Escribinos por WhatsApp">
-    💬
-  </a>
-
   <script>
+    // Carga carrito (array de objetos {nombre, precio, img, cantidad})
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    function formatPrice(n){ return Number(n || 0).toFixed(0); }
+
     function renderCarrito() {
-      const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-      const list = document.getElementById('carrito-completo');
-      if(!list) return;
-      list.innerHTML = '';
-      if(carrito.length === 0) {
-        const li = document.createElement('li');
-        li.textContent = 'El carrito está vacío.';
-        list.appendChild(li);
-      } else {
-        carrito.forEach((item, i) => {
-          const li = document.createElement('li');
-          li.style.padding = '8px 0';
-          li.textContent = item;
-          list.appendChild(li);
-        });
+      const contenedor = document.getElementById('carrito-items');
+      const totalEl = document.getElementById('total');
+      contenedor.innerHTML = '';
+      let total = 0;
+
+      if(!carrito || carrito.length === 0){
+        const empty = document.createElement('p');
+        empty.textContent = 'El carrito está vacío.';
+        empty.style.padding = '1rem 0';
+        contenedor.appendChild(empty);
+        totalEl.textContent = 'Total: C$0';
+        document.getElementById('vaciar-carrito-btn').disabled = true;
+        document.getElementById('vaciar-carrito-btn').style.opacity = 0.6;
+        document.getElementById('realizar-pedido-btn').disabled = true;
+        document.getElementById('realizar-pedido-btn').style.opacity = 0.6;
+        return;
       }
-      const contador = document.getElementById('contador-carrito');
-      if(contador) contador.textContent = carrito.length;
+
+      carrito.forEach((item, index) => {
+        // Compatibilidad: si es string, convertir a objeto básico
+        if (typeof item === 'string') {
+          item = { nombre: item, precio: 0, img: '', cantidad: 1 };
+        }
+        total += Number(item.precio || 0) * (item.cantidad || 1);
+
+        const row = document.createElement('div');
+        row.className = 'item-carrito';
+
+        const left = document.createElement('div'); left.className = 'item-left';
+        const img = document.createElement('img'); img.src = item.img || 'img/placeholder.png'; img.alt = item.nombre || 'Producto';
+        const meta = document.createElement('div');
+        const name = document.createElement('p'); name.className = 'item-nombre'; name.textContent = item.nombre || 'Producto sin nombre';
+        const sub = document.createElement('div'); sub.className = 'item-meta'; sub.textContent = (item.cantidad ? ('Cantidad: ' + item.cantidad) : '');
+        meta.appendChild(name); meta.appendChild(sub);
+        left.appendChild(img); left.appendChild(meta);
+
+        const actions = document.createElement('div'); actions.className = 'item-actions';
+        const price = document.createElement('div'); price.textContent = 'C$' + formatPrice(Number(item.precio || 0) * (item.cantidad || 1));
+        price.style.fontWeight = '700';
+
+        const del = document.createElement('button');
+        del.className = 'btn-eliminar';
+        del.type = 'button';
+        del.title = 'Eliminar artículo';
+        del.textContent = 'Eliminar';
+        del.addEventListener('click', () => { eliminarItem(index); });
+
+        actions.appendChild(price); actions.appendChild(del);
+
+        row.appendChild(left); row.appendChild(actions);
+        contenedor.appendChild(row);
+      });
+
+      totalEl.textContent = 'Total: C$' + formatPrice(total);
+      document.getElementById('vaciar-carrito-btn').disabled = false;
+      document.getElementById('vaciar-carrito-btn').style.opacity = 1;
+      document.getElementById('realizar-pedido-btn').disabled = false;
+      document.getElementById('realizar-pedido-btn').style.opacity = 1;
+    }
+
+    function eliminarItem(index){
+      carrito.splice(index,1);
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      renderCarrito();
+    }
+
+    function vaciarCarrito(){
+      if(!confirm('¿Seguro que quieres vaciar el carrito?')) return;
+      carrito = [];
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      renderCarrito();
+    }
+
+    function realizarPedido(){
+      if(!carrito || carrito.length === 0){
+        alert('El carrito está vacío. Agrega productos antes de realizar el pedido.');
+        return;
+      }
+      let mensaje = 'Hola, quiero realizar un pedido desde la tienda Reiless. Detalles:\n\n';
+      let total = 0;
+      carrito.forEach(item => {
+        if (typeof item === 'string') {
+          item = { nombre: item, precio: 0, cantidad: 1 };
+        }
+        const precioItem = Number(item.precio || 0) * (item.cantidad || 1);
+        total += precioItem;
+        mensaje += `${item.nombre} x${item.cantidad || 1} - C$${formatPrice(precioItem)}\n`;
+      });
+      mensaje += `\nTotal: C$${formatPrice(total)}\n\nPor favor, genera un link de pago. Gracias!`;
+
+      const numeroWhatsApp = '50577002788'; // Número de la tienda
+      const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       renderCarrito();
-      const btn = document.getElementById('vaciar-carrito-btn');
-      if(btn) btn.addEventListener('click', () => { localStorage.removeItem('carrito'); renderCarrito(); });
+      document.getElementById('vaciar-carrito-btn').addEventListener('click', vaciarCarrito);
+      document.getElementById('realizar-pedido-btn').addEventListener('click', realizarPedido);
     });
   </script>
 
