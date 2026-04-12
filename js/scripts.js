@@ -118,3 +118,37 @@ document.addEventListener("DOMContentLoaded", function () {
       startTimer();
     });
   });
+
+// Selector de variante: miniaturas verticales
+document.addEventListener('DOMContentLoaded', function() {
+  const miniaturas = document.querySelectorAll('.miniatura');
+  if (miniaturas.length === 0) return; // No hay selector en esta página
+
+  const imagenPrincipal = document.getElementById('imagen-principal');
+  const tituloPrincipal = document.getElementById('titulo-principal');
+  const descripcionPrincipal = document.getElementById('descripcion-principal');
+  const botonAgregar = document.querySelector('.agregar-carrito');
+
+  // Datos de variantes - se pueden definir por página o globalmente
+  const variantes = window.variantesData || {};
+
+  miniaturas.forEach(mini => {
+    mini.addEventListener('click', function() {
+      miniaturas.forEach(m => m.classList.remove('activa'));
+      this.classList.add('activa');
+      const variante = this.dataset.variante;
+      const data = variantes[variante];
+      if (data) {
+        imagenPrincipal.src = data.img;
+        tituloPrincipal.textContent = data.titulo;
+        descripcionPrincipal.textContent = data.desc;
+        botonAgregar.dataset.producto = data.producto;
+      }
+    });
+  });
+
+  // Seleccionar primera por defecto
+  if (miniaturas.length > 0) {
+    miniaturas[0].click();
+  }
+});

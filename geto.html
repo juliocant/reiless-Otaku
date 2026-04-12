@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reiless | Inicio</title>
+  <title>Camiseta Geto | Reiless</title>
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
@@ -31,29 +31,30 @@
     <button id="cerrar-carrito" aria-label="Cerrar carrito" style="position: absolute; top: 8px; right: 8px; background: none; border: none; font-size: 1.2rem; cursor: pointer;">&times;</button>
   </aside>
 
-  <main class="detalle-producto" style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start; justify-content: center; max-width: 900px; margin: 2rem auto;">
-    <div class="imgprodetalle" style="flex: 1 1 320px; max-width: 400px; display: flex; align-items: center; justify-content: center; background: #f8f8f8; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07);">
-      <img src="/img/Camiseta jjk/28.jpg" alt="Camiseta Geto Suguru" style="width: 100%; max-width: 340px; border-radius: 10px;">
-    </div>
-    <div class="textprodetalle" style="flex: 1 1 320px; max-width: 400px; display: flex; flex-direction: column; justify-content: center; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); padding: 2rem;">
-      <h1 style="margin-top:0;">Camiseta Geto</h1>
-      <p style="font-size:1.1rem;">Para los fans intensos y misteriosos, esta camiseta de Geto Suguru transmite poder, oscuridad y una presencia inconfundible. Ideal para quienes aprecian los personajes complejos.</p>
-      <ul style="margin: 1rem 0; padding-left: 1.2rem;">
-        <li>Material: Algodón suave con poliéster</li>
-        <li>Tallas: S, M, L, XL</li>
-        <li>Color: Negro con detalles en dorado y violeta</li>
-      </ul>
-      <label for="talla-select-geto" style="font-weight:700; margin-top:1rem; display:block;">Elige tu talla</label>
-      <select id="talla-select-geto" class="talla-select" aria-label="Seleccionar talla para Camiseta Geto">
-        <option value="">Selecciona una talla</option>
-        <option value="16">16</option>
-        <option value="S">S</option>
-        <option value="M">M</option>
-        <option value="L">L</option>
-        <option value="XL">XL</option>
-      </select>
-      <span class="precio" style="font-size:1.3rem; font-weight:bold; color:#0b2a42; margin-bottom:1rem;">C$450</span>
-      <a href="#" class="agregar-carrito" data-producto="Camiseta Geto">Agregar al carrito</a>
+  <main class="productos">
+    <h1>Variantes de Geto Suguru</h1>
+    <div class="selector-variante">
+      <div class="miniaturas">
+        <img src="https://via.placeholder.com/150x200?text=Geto+1" class="miniatura activa" data-variante="1" alt="Geto Variante 1">
+        <img src="https://via.placeholder.com/150x200?text=Geto+2" class="miniatura" data-variante="2" alt="Geto Variante 2">
+        <img src="https://via.placeholder.com/150x200?text=Geto+3" class="miniatura" data-variante="3" alt="Geto Variante 3">
+        <img src="https://via.placeholder.com/150x200?text=Geto+4" class="miniatura" data-variante="4" alt="Geto Variante 4">
+      </div>
+      <div class="vista-principal">
+        <img id="imagen-principal" src="https://via.placeholder.com/400x500?text=Geto+Variante+1" alt="Geto Variante 1">
+        <h2 id="titulo-principal">Geto Variante 1</h2>
+        <p id="descripcion-principal">Estilo oscuro con un diseño sobrio y elegante.</p>
+        <div class="talla-select">
+          <label for="talla">Talla:</label>
+          <select id="talla">
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+          </select>
+        </div>
+        <button class="agregar-carrito" data-producto="Camiseta Geto Variante 1">Agregar al carrito - C$450</button>
+      </div>
     </div>
   </main>
 
@@ -82,6 +83,34 @@
     <script>document.getElementById('anio-footer').textContent = new Date().getFullYear();</script>
   </footer>
   <a href="https://wa.me/50577002788" class="whatsapp-float" target="_blank" title="Escribinos por WhatsApp">💬</a>
+  <script>
+    window.variantesData = {
+      1: {
+        img: 'https://via.placeholder.com/400x500?text=Geto+Variante+1',
+        titulo: 'Geto Variante 1',
+        desc: 'Estilo oscuro con un diseño sobrio y elegante.',
+        producto: 'Camiseta Geto Variante 1'
+      },
+      2: {
+        img: 'https://via.placeholder.com/400x500?text=Geto+Variante+2',
+        titulo: 'Geto Variante 2',
+        desc: 'Modelo con detalles icónicos para coleccionistas.',
+        producto: 'Camiseta Geto Variante 2'
+      },
+      3: {
+        img: 'https://via.placeholder.com/400x500?text=Geto+Variante+3',
+        titulo: 'Geto Variante 3',
+        desc: 'Versión alternativa con un toque moderno.',
+        producto: 'Camiseta Geto Variante 3'
+      },
+      4: {
+        img: 'https://via.placeholder.com/400x500?text=Geto+Variante+4',
+        titulo: 'Geto Variante 4',
+        desc: 'Edición especial con patrón único y detalles dorados.',
+        producto: 'Camiseta Geto Variante 4'
+      }
+    };
+  </script>
   <script src="js/scripts.js"></script>
   <script src="js/funcionalidad.js"></script>
 </body>

@@ -600,3 +600,70 @@ footer {
     max-width: 96vw;
   }
 }
+
+/* Estilos para selector de variante */
+.selector-variante {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.miniaturas {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.miniatura {
+  width: 75px;
+  height: 100px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  border-radius: 8px;
+}
+
+.miniatura.activa {
+  border-color: var(--azul-marino);
+}
+
+.vista-principal {
+  flex: 1;
+  text-align: center;
+}
+
+.vista-principal img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.vista-principal h2 {
+  margin-top: 1rem;
+  color: var(--azul-marino);
+}
+
+.vista-principal p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .selector-variante {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .miniaturas {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 0.5rem;
+  }
+  .miniatura {
+    width: 60px;
+    height: 80px;
+    flex-shrink: 0;
+  }
+}

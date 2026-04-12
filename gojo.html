@@ -29,29 +29,30 @@
     <button id="cerrar-carrito" aria-label="Cerrar carrito" style="position: absolute; top: 8px; right: 8px; background: none; border: none; font-size: 1.2rem; cursor: pointer;">&times;</button>
   </aside>
 
-  <main class="detalle-producto" style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start; justify-content: center; max-width: 900px; margin: 2rem auto;">
-    <div class="imgprodetalle" style="flex: 1 1 320px; max-width: 400px; display: flex; align-items: center; justify-content: center; background: #f8f8f8; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07);">
-      <img src="/img/Camiseta jjk/6.jpg" alt="Camiseta Gojo Satoru" style="width: 100%; max-width: 340px; border-radius: 10px;">
-    </div>
-    <div class="textprodetalle" style="flex: 1 1 320px; max-width: 400px; display: flex; flex-direction: column; justify-content: center; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); padding: 2rem;">
-      <h1 style="margin-top:0;">Camiseta Gojo</h1>
-      <p style="font-size:1.1rem;">Luce el poder y el carisma de Satoru Gojo, el hechicero más fuerte de Jujutsu Kaisen. Esta camiseta es perfecta para quienes buscan destacar con estilo y actitud.</p>
-      <ul style="margin: 1rem 0; padding-left: 1.2rem;">
-        <li>Material: Algodón premium con poliéster</li>
-        <li>Tallas: S, M, L, XL</li>
-        <li>Color: Negro con estampado azul y blanco</li>
-      </ul>
-      <label for="talla-select-gojo" style="font-weight:700; margin-top:1rem; display:block;">Elige tu talla</label>
-      <select id="talla-select-gojo" class="talla-select" aria-label="Seleccionar talla para Camiseta Gojo">
-        <option value="">Selecciona una talla</option>
-        <option value="16">16</option>
-        <option value="S">S</option>
-        <option value="M">M</option>
-        <option value="L">L</option>
-        <option value="XL">XL</option>
-      </select>
-      <span class="precio" style="font-size:1.3rem; font-weight:bold; color:#0b2a42; margin-bottom:1rem;">C$450</span>
-      <a href="#" class="agregar-carrito" data-producto="Camiseta Gojo">Agregar al carrito</a>
+  <main class="productos">
+    <h1>Variantes de Satoru Gojo</h1>
+    <div class="selector-variante">
+      <div class="miniaturas">
+        <img src="img/Camiseta jjk/gojo1.jpg" class="miniatura activa" data-variante="1" alt="Gojo Variante 1">
+        <img src="img/Camiseta jjk/9.jpg" class="miniatura" data-variante="2" alt="Gojo Variante 2">
+        <img src="img/Camiseta jjk/20.jpg" class="miniatura" data-variante="3" alt="Gojo Variante 3">
+        <img src="img/Camiseta jjk/16.jpg" class="miniatura" data-variante="4" alt="Gojo Variante 4">
+      </div>
+      <div class="vista-principal">
+        <img id="imagen-principal" src="https://via.placeholder.com/400x500?text=Gojo+Variante+1" alt="Gojo Variante 1">
+        <h2 id="titulo-principal">Gojo Variante 1</h2>
+        <p id="descripcion-principal">Versión alternativa para fans del estilo clásico.</p>
+        <div class="talla-select">
+          <label for="talla">Talla:</label>
+          <select id="talla">
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+          </select>
+        </div>
+        <button class="agregar-carrito" data-producto="Camiseta Gojo Variante 1">Agregar al carrito - C$450</button>
+      </div>
     </div>
   </main>
 
@@ -79,6 +80,34 @@
     <p style="text-align: center; margin: 0; font-size: 0.98rem; opacity: 0.8;">&copy; <span id="anio-footer"></span> Reiless Otaku. Todos los derechos reservados.</p>
     <script>document.getElementById('anio-footer').textContent = new Date().getFullYear();</script>
   </footer>
+  <script>
+    window.variantesData = {
+      1: {
+        img: 'img/Camiseta jjk/gojo1.jpg',
+        titulo: 'Gojo Variante 1',
+        desc: 'Versión alternativa para fans del estilo clásico.',
+        producto: 'Camiseta Gojo Variante 1'
+      },
+      2: {
+        img: 'img/Camiseta jjk/9.jpg',
+        titulo: 'Gojo Variante 2',
+        desc: 'Diseño inspirador con un aire moderno.',
+        producto: 'Camiseta Gojo Variante 2'
+      },
+      3: {
+        img: 'img/Camiseta jjk/20.jpg',
+        titulo: 'Gojo Variante 3',
+        desc: 'Edición especial para coleccionistas del personaje.',
+        producto: 'Camiseta Gojo Variante 3'
+      },
+      4: {
+        img: 'img/Camiseta jjk/16.jpg',
+        titulo: 'Gojo Variante 4',
+        desc: 'Modelo urbano con detalles únicos.',
+        producto: 'Camiseta Gojo Variante 4'
+      }
+    };
+  </script>
   <script src="js/scripts.js"></script>
   <script src="js/funcionalidad.js"></script>
 </body>
