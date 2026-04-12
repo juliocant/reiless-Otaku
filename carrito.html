@@ -144,6 +144,61 @@
         alert('El carrito está vacío. Agrega productos antes de realizar el pedido.');
         return;
       }
+
+      // Verificar si contiene solo una camisa de C$450 para pago directo.
+      if(carrito.length === 1){
+        let item = carrito[0];
+        if (typeof item === 'string') {
+          item = { nombre: item, precio: 0, cantidad: 1 };
+        }
+        const cantidad = item.cantidad || 1;
+        const precioItem = Number(item.precio || 0) * cantidad;
+        const nombreMinusculas = (item.nombre || '').toLowerCase();
+        const esCamisa = nombreMinusculas.includes('camiseta') || nombreMinusculas.includes('camisa');
+
+        if(esCamisa && precioItem === 450 && cantidad === 1){
+          const pagoDirecto = 'https://pagoconpoket.com/merchant/973d436a-6a93-48e5-9134-05cf800e085b/link/5d6ffeda-51fa-46ce-abc4-1ff16ead7f68';
+          window.open(pagoDirecto, '_blank');
+          return;
+        }
+      }
+      // Verificar si contiene 2 camisas de C$450 para pago directo.
+      // Verificar si contiene 2 camisas de C$450 cada una para pago directo.
+      if(carrito.length === 2){
+
+        let total = 0;
+        let todasSonCamisas = true;
+
+        carrito.forEach(item => {
+
+          if (typeof item === 'string') {
+            item = { nombre: item, precio: 0, cantidad: 1 };
+          }
+
+          const cantidad = item.cantidad || 1;
+          const precioItem = Number(item.precio || 0) * cantidad;
+
+          total += precioItem;
+
+          const nombreMinusculas = (item.nombre || '').toLowerCase();
+
+          const esCamisa =
+            nombreMinusculas.includes('camiseta') ||
+            nombreMinusculas.includes('camisa');
+
+          if(!esCamisa){
+            todasSonCamisas = false;
+          }
+
+        });
+
+        if(todasSonCamisas && total === 900){
+          const pagoDirecto = 'https://pagoconpoket.com/merchant/973d436a-6a93-48e5-9134-05cf800e085b/link/9c518c1a-cb8d-4ba7-a674-fb2cf033f365';
+          window.open(pagoDirecto, '_blank');
+          return;
+        }
+      }
+
       let mensaje = 'Hola, quiero realizar un pedido desde la tienda Reiless. Detalles:\n\n';
       let total = 0;
       carrito.forEach(item => {
