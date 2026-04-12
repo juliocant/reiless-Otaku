@@ -138,6 +138,23 @@ nav a:hover {
   text-align: center;
 }
 
+.talla-select {
+  width: 100%;
+  max-width: 220px;
+  padding: 0.95rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 1rem;
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+.talla-select:focus {
+  outline: 2px solid var(--azul-claro);
+  outline-offset: 2px;
+}
+
 .agregar-carrito:hover, .agregar-carrito:focus,
 .boton:hover, .boton:focus {
   background-color: #123e5a;

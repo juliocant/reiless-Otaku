@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const li = document.createElement("li");
       const nombre = typeof producto === 'string' ? producto : (producto.nombre || 'Producto');
       const cantidad = typeof producto === 'string' ? 1 : (producto.cantidad || 1);
-      li.textContent = `${nombre} (x${cantidad})`;
+      const talla = (typeof producto === 'object' && producto.talla) ? ` - Talla ${producto.talla}` : '';
+      li.textContent = `${nombre}${talla} (x${cantidad})`;
       listaCarrito.appendChild(li);
     });
     if (contador) contador.textContent = carrito.length;
@@ -50,24 +51,35 @@ document.addEventListener("DOMContentLoaded", function () {
   enlacesAgregar.forEach(enlace => {
     enlace.addEventListener("click", function (e) {
       e.preventDefault();
-      const productoEl = this.closest('.producto');
-      const nombre = productoEl ? productoEl.querySelector('h3')?.textContent || this.dataset.producto : this.dataset.producto;
+      const productoEl = this.closest('.producto') || this.closest('.detalle-producto');
+      const nombre = productoEl ? productoEl.querySelector('h3, h1')?.textContent || this.dataset.producto : this.dataset.producto;
       const img = productoEl ? productoEl.querySelector('img')?.src || '' : '';
-      const precioTexto = productoEl ? productoEl.querySelector('span')?.textContent || '0' : '0';
-      const precio = parseFloat(precioTexto.replace(/[^\d.]/g, '')) || 0;
+      const precioTexto = productoEl ? productoEl.querySelector('span, .precio')?.textContent || '0' : '0';
+      const precio = parseFloat((precioTexto || '').replace(/[^\d.]/g, '')) || 0;
       const descripcion = productoEl ? productoEl.querySelector('p')?.textContent || '' : '';
+      const tallaSelect = productoEl ? productoEl.querySelector('.talla-select') : null;
+      const talla = tallaSelect ? tallaSelect.value : '';
+
+      if (tallaSelect && (!talla || talla === '')) {
+        alert('Selecciona una talla antes de agregar al carrito.');
+        return;
+      }
 
       const productoObj = {
         nombre: nombre,
         img: img,
         precio: precio,
         descripcion: descripcion,
-        cantidad: 1
+        cantidad: 1,
+        talla: talla || undefined
       };
 
       let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
       // Verificar si ya existe y aumentar cantidad
-      const existente = carrito.find(item => item.nombre === nombre);
+      const existente = carrito.find(item => {
+        if (typeof item === 'string') return item === nombre && !talla;
+        return item.nombre === nombre && ((item.talla || '') === (talla || ''));
+      });
       if (existente) {
         existente.cantidad += 1;
       } else {
@@ -75,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       localStorage.setItem("carrito", JSON.stringify(carrito));
       actualizarVistaCarrito();
-      mostrarAnimacionAgregar(nombre);
+      mostrarAnimacionAgregar(nombre + (talla ? ` (${talla})` : ''));
     });
   });
 

@@ -98,7 +98,8 @@
         const img = document.createElement('img'); img.src = item.img || 'img/placeholder.png'; img.alt = item.nombre || 'Producto';
         const meta = document.createElement('div');
         const name = document.createElement('p'); name.className = 'item-nombre'; name.textContent = item.nombre || 'Producto sin nombre';
-        const sub = document.createElement('div'); sub.className = 'item-meta'; sub.textContent = (item.cantidad ? ('Cantidad: ' + item.cantidad) : '');
+        const tallaTexto = item.talla ? ` • Talla: ${item.talla}` : '';
+        const sub = document.createElement('div'); sub.className = 'item-meta'; sub.textContent = (item.cantidad ? ('Cantidad: ' + item.cantidad) : '') + tallaTexto;
         meta.appendChild(name); meta.appendChild(sub);
         left.appendChild(img); left.appendChild(meta);
 
@@ -207,7 +208,8 @@
         }
         const precioItem = Number(item.precio || 0) * (item.cantidad || 1);
         total += precioItem;
-        mensaje += `${item.nombre} x${item.cantidad || 1} - C$${formatPrice(precioItem)}\n`;
+        const tallaTexto = item.talla ? ` - Talla: ${item.talla}` : '';
+        mensaje += `${item.nombre}${tallaTexto} x${item.cantidad || 1} - C$${formatPrice(precioItem)}\n`;
       });
       mensaje += `\nTotal: C$${formatPrice(total)}\n\nPor favor, genera un link de pago. Gracias!`;
 
