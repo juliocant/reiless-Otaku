@@ -33,7 +33,27 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   padding: .05rem 2rem;
+}
+
+header .encabezado {
+  display: flex;
+  align-items: center;
+}
+
+nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
 }
 
 /* Botón hamburguesa (invisible en desktop) */
@@ -82,12 +102,13 @@ header {
 
 .logo img {
   height: 50px;
+  
 }
 
 nav ul {
-  list-style: none;
+  list-style:   none;
   display: flex;
-  gap: 1.5rem;
+  gap: 20px;
   margin: 0;
   padding: 0;
 }
@@ -390,11 +411,12 @@ footer {
   border: none;
   cursor: pointer;
   position: relative;
-  margin-left: 1rem;
+  margin-left: auto;
   font-size: 1.5rem;
   color: var(--blanco);
   display: flex;
   align-items: center;
+  order: 3;
 }
 #carrito-header-btn:focus {
   outline: 2px solid var(--azul-claro);
@@ -476,6 +498,10 @@ footer {
   .nav-toggle { display: block; }
   .logo img {
     height: 40px;
+  }
+  nav {
+    position: static;
+    transform: none;
   }
   nav ul {
     gap: 1rem;
