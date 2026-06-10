@@ -2,80 +2,268 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tienda | Reiless</title>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tienda | Reiless Otaku</title>
+  <link rel="icon" href="/img/logo.png" type="image/png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/tienda.css" />
 </head>
-<body>
-
-<!-- Vista previa del carrito como extensión -->
-<div id="vista-previa-carrito" style="display: none; position: fixed; top: 50px; right: 10px; background: #fff; border: 1px solid #ccc; border-radius: 8px; padding: 15px; width: 300px; z-index: 1001; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
-  <h3 style="margin-top: 0;">Carrito</h3>
-  <ul id="lista-carrito" style="list-style:none; padding:0; margin:0; max-height: 200px; overflow-y:auto;"></ul>
-  <a href="carrito.html" style="display: block; margin-top: 10px; padding: 8px 12px; background: #000; color: #fff; text-align: center; border-radius: 5px; text-decoration: none;">Ver carrito completo</a>
-</div>
-
-
-<!-- Botón del carrito -->
-
-</div>
-
+<body class="shop-page">
   <header>
-    <div class="logo"><a href="index.html"><img src="img/logo.png" alt="Reiless Logo" /></a></div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="tienda.html">Tienda</a></li>
-        <li><a href="index.html#sobre">Sobre Nosotros</a></li>
-        <li><a href="index.html#contacto">Contacto</a></li>
-      </ul>
-    </nav>
-    <button id="carrito-header-btn" aria-label="Ver carrito" style="background: none; border: none; cursor: pointer; position: relative; margin-left: 1rem; font-size: 1.5rem;">
-      <span aria-hidden="true">🛒</span>
-      <span id="contador-carrito" style="position: absolute; top: -8px; right: -8px; background: #e53935; color: #fff; border-radius: 50%; padding: 2px 6px; font-size: 0.8rem; min-width: 20px; text-align: center;">0</span>
-    </button>
-  </header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="Inicio Reiless Otaku">
+        <img src="img/logo.png" alt="Reiless Otaku Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <div class="brand-text" style="display:none;">REILESS <span>OTAKU オタク</span></div>
+      </a>
 
-  <main class="selector-productos">
-    <h1>¿Qué te gustaría ver?</h1>
-    <div class="grid-categorias">
-      <a href="/camisetas/index.html" class="categoria">👕 Camisetas</a>
-      <a href="/agendas.html" class="categoria">📒 Agendas</a>
-      <a href="/tazas.html" class="categoria">☕ Tazas</a>
-      <a href="/hoddies.html" class="categoria">🧥 Hoodies</a>
-      <a href="/figuras.html" class="categoria">🧸 Figuras</a>
-    </div>
-  </main>
+      <button id="nav-toggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
 
-  <footer style="background: #0b2a42; color: #fff; padding: 2.5rem 1rem 1.2rem 1rem; margin-top: 3rem; border-radius: 18px 18px 0 0; box-shadow: 0 -2px 12px rgba(0,0,0,0.07);">
-    <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; align-items: flex-start;">
-      <div style="flex: 1 1 220px; min-width: 180px;">
-        <img src="img/logo.png" alt="Reiless Logo" style="width: 120px; margin-bottom: 0.7rem;">
-        <p style="margin:0; font-size: 1rem; opacity: 0.85;">Reiless Otaku - Tienda de cultura pop y anime en Nicaragua.</p>
-      </div>
-      <nav aria-label="Enlaces útiles" style="flex: 1 1 180px; min-width: 150px;">
-        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
-          <li><a href="index.html" style="color: #fff; text-decoration: none; opacity: 0.95;">Inicio</a></li>
-          <li><a href="tienda.html" style="color: #fff; text-decoration: none; opacity: 0.95;">Tienda</a></li>
-          <li><a href="#contacto" style="color: #fff; text-decoration: none; opacity: 0.95;">Contacto</a></li>
-          <li><a href="https://instagram.com/reiless.ni" target="_blank" rel="noopener" style="color: #fff; text-decoration: none; opacity: 0.95;">Instagram</a></li>
-          <li><a href="https://wa.me/50577002788" target="_blank" rel="noopener" style="color: #fff; text-decoration: none; opacity: 0.95;">WhatsApp</a></li>
+      <nav id="main-nav">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a class="active" href="tienda.html">Tienda</a></li>
+          <li><a href="#categorias">Categorías</a></li>
+          <li><a href="#mas-vendido">Más vendido</a></li>
+          <li><a href="#contacto-tienda">Contacto</a></li>
         </ul>
       </nav>
-      <div style="flex: 1 1 220px; min-width: 180px;">
-        <p style="margin:0; font-size: 1rem; opacity: 0.85;">¿Dudas? <a href="mailto:reiless.ni@gmail.com" style="color:#ffd600; text-decoration:underline;">reiless.ni@gmail.com</a></p>
-        <p style="margin:0.5rem 0 0 0; font-size: 1rem; opacity: 0.85;">Managua, Nicaragua</p>
+
+      <div class="header-actions">
+        <a class="icon-btn" href="#filtros" aria-label="Filtrar productos">⌕</a>
+        <button id="carrito-header-btn" class="icon-btn" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
       </div>
     </div>
-    <hr style="border: none; border-top: 1px solid #fff2; margin: 1.5rem 0 1rem 0;">
-    <p style="text-align: center; margin: 0; font-size: 0.98rem; opacity: 0.8;">&copy; <span id="anio-footer"></span> Reiless Otaku. Todos los derechos reservados.</p>
+  </header>
+
+  <aside id="vista-previa-carrito" aria-label="Vista previa del carrito">
+    <h3>Carrito</h3>
+    <ul id="lista-carrito"></ul>
+    <a href="carrito.html" class="btn btn-primary">Ver carrito completo</a>
+    <button id="cerrar-carrito" aria-label="Cerrar carrito">×</button>
+  </aside>
+
+  <main>
+    <section class="shop-hero">
+      <div class="container shop-hero-grid">
+        <div class="shop-copy">
+          <span class="eyebrow">Tienda Reiless Otaku</span>
+          <h1>Elige tu categoría y arma tu estilo geek.</h1>
+          <p>Camisetas, hoodies, tazas, mamelucos, figuras 3D y productos personalizados para fans que quieren algo único.</p>
+          <div class="buttons">
+            <a href="#categorias" class="btn btn-primary">Ver categorías</a>
+            <a href="#mas-vendido" class="btn btn-secondary">Lo más vendido</a>
+          </div>
+        </div>
+        <div class="shop-hero-card">
+          <div class="hero-product-tag">Diseños exclusivos</div>
+          <img src="img/banner-reiless.png" alt="Productos Reiless Otaku" onerror="this.src='/img/Camiseta jjk/Gojo1.jpg';" />
+        </div>
+      </div>
+    </section>
+
+    <section id="filtros" class="shop-filters-section">
+      <div class="container">
+        <div class="filter-panel">
+          <div>
+            <span class="section-kicker">Explora por fandom</span>
+            <h2>Encuentra lo tuyo</h2>
+          </div>
+          <div class="filters">
+            <button class="filter-chip active">Todo</button>
+            <button class="filter-chip">Anime</button>
+            <button class="filter-chip">K-pop</button>
+            <button class="filter-chip">Videojuegos</button>
+            <button class="filter-chip">Personalizados</button>
+            <button class="filter-chip">Desde C$150</button>
+            <button class="filter-chip">Para regalo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="categorias" class="shop-categories">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Categorías principales</p>
+            <h2>Compra por tipo de producto</h2>
+          </div>
+          <p class="muted">Cada categoría puede llevar a su propia página o catálogo.</p>
+        </div>
+
+        <div class="category-grid">
+          <a class="category-card featured" href="/camisetas/index.html">
+            <img src="/img/Camiseta jjk/Gojo1.jpg" alt="Camisetas anime" />
+            <div class="category-overlay">
+              <span>Desde C$450</span>
+              <h3>Camisetas</h3>
+              <p>Diseños anime, k-pop, gamer y personalizados.</p>
+            </div>
+          </a>
+
+          <a class="category-card" href="hoddies.html">
+            <img src="/img/Hoddies/onepiece.jpg" alt="Hoodies Reiless Otaku" />
+            <div class="category-overlay">
+              <span>Desde C$700</span>
+              <h3>Hoodies</h3>
+              <p>Comodidad con estética otaku.</p>
+            </div>
+          </a>
+
+          <a class="category-card" href="tazas.html">
+            <img src="/img/tazas/taza-anime.jpg" alt="Tazas anime personalizadas" />
+            <div class="category-overlay">
+              <span>Desde C$180</span>
+              <h3>Tazas y termos</h3>
+              <p>Regalos útiles con tu fandom favorito.</p>
+            </div>
+          </a>
+
+          <a class="category-card" href="figuras.html">
+            <img src="/img/Figuras/gengar.jpg" alt="Figuras 3D" />
+            <div class="category-overlay">
+              <span>Desde C$300</span>
+              <h3>Figuras 3D</h3>
+              <p>Modelos coleccionables y piezas personalizadas.</p>
+            </div>
+          </a>
+
+          <a class="category-card" href="mamelucos-full-sublimados.html">
+            <img src="/img/mamelucos/mameluco-pikachu.jpg" alt="Mamelucos full sublimados" />
+            <div class="category-overlay">
+              <span>Desde C$480</span>
+              <h3>Mamelucos full sublimados</h3>
+              <p>Diseños completos y llamativos.</p>
+            </div>
+          </a>
+
+          <a class="category-card" href="mamelucos-personalizados.html">
+            <img src="/img/mamelucos/mameluco-pikachu.jpg" alt="Mamelucos personalizados" />
+            <div class="category-overlay">
+              <span>Desde C$200</span>
+              <h3>Mamelucos personalizados</h3>
+              <p>Nombres, frases y diseños especiales.</p>
+            </div>
+          </a>
+
+          <a class="category-card" href="agendas.html">
+            <img src="/img/agendas/agenda-anime.jpg" alt="Papelería anime" />
+            <div class="category-overlay">
+              <span>Desde C$100</span>
+              <h3>Cuadernos y agendas</h3>
+              <p>Papelería creativa para estudiar y organizarte.</p>
+            </div>
+          </a>
+
+          <a class="category-card" href="llaveros.html">
+            <img src="/img/llaveros/llavero-anime.jpg" alt="Llaveros anime" />
+            <div class="category-overlay">
+              <span>Desde C$90</span>
+              <h3>Llaveros y accesorios</h3>
+              <p>Detalles pequeños para llevar tu fandom contigo.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="mas-vendido" class="best-sellers">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Favoritos de la comunidad</p>
+            <h2>Lo más vendido</h2>
+          </div>
+          <a href="tienda.html" class="btn btn-secondary">Ver todo</a>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="product-img"><img src="/img/Camiseta jjk/Gojo1.jpg" alt="Camiseta Gojo" /></div>
+            <div class="product-body">
+              <h3>Camiseta Gojo</h3>
+              <p>Una de las favoritas para fans de Jujutsu Kaisen.</p>
+              <div class="price-row"><span class="price">C$450</span><a class="mini-btn" href="/camisetas/JJK%20coleccion/gojo.html">→</a></div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-img"><img src="/img/Hoddies/onepiece.jpg" alt="Hoodie One Piece" /></div>
+            <div class="product-body">
+              <h3>Hoodie One Piece</h3>
+              <p>Ideal para outfit otaku cómodo y exclusivo.</p>
+              <div class="price-row"><span class="price">C$880</span><a class="mini-btn" href="hoddies.html">→</a></div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-img"><img src="/img/Figuras/gengar.jpg" alt="Figura Gengar 3D" /></div>
+            <div class="product-body">
+              <h3>Figura Gengar 3D</h3>
+              <p>Para coleccionistas y escritorios gamer.</p>
+              <div class="price-row"><span class="price">C$1000</span><a class="mini-btn" href="figuras.html">→</a></div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-img"><img src="/img/tazas/taza-anime.jpg" alt="Taza anime" /></div>
+            <div class="product-body">
+              <h3>Taza anime</h3>
+              <p>Perfecta para regalo personalizado.</p>
+              <div class="price-row"><span class="price">C$180</span><a class="mini-btn" href="tazas.html">→</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="community-banner">
+      <div class="container">
+        <div class="banner-card">
+          <span class="eyebrow">Hecho por fans</span>
+          <h2>Una tienda para la comunidad geek de Nicaragua.</h2>
+          <p>Personalizamos productos para eventos, regalos, colecciones y fandoms. Si no lo ves en catálogo, lo podemos crear contigo.</p>
+          <a class="btn btn-primary" href="https://wa.me/50577002788" target="_blank" rel="noopener">Pedir personalizado</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto-tienda" class="contact-card-section">
+      <div class="container">
+        <div class="contact-card">
+          <p class="section-kicker">¿Buscas algo específico?</p>
+          <h2>Escríbenos y te ayudamos a encontrarlo.</h2>
+          <form>
+            <div class="contact-grid">
+              <input type="text" placeholder="Tu nombre" required />
+              <input type="email" placeholder="Tu correo" required />
+              <textarea placeholder="Ejemplo: quiero una camiseta de One Piece talla M..."></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Enviar mensaje</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="logo"><img src="img/logo.png" alt="Reiless Otaku Logo" /></a>
+        <p>Anime, camisetas, tazas, hoodies, impresión 3D y productos personalizados en Nicaragua.</p>
+        <div class="socials"><a href="https://instagram.com/reiless.ni" target="_blank" rel="noopener">IG</a><a href="https://wa.me/50577002788" target="_blank" rel="noopener">WA</a></div>
+      </div>
+      <div><h4>Tienda</h4><ul><li><a href="#categorias">Categorías</a></li><li><a href="#mas-vendido">Lo más vendido</a></li><li><a href="#filtros">Filtros</a></li></ul></div>
+      <div><h4>Productos</h4><ul><li>Camisetas</li><li>Hoodies</li><li>Figuras 3D</li><li>Mamelucos</li></ul></div>
+      <div><h4>Contacto</h4><p>Managua, Nicaragua</p><p><a href="mailto:reilessshirt@gmail.com">reilessshirt@gmail.com</a></p><p><a href="https://wa.me/50577002788" target="_blank" rel="noopener">WhatsApp: 7700-2788</a></p></div>
+    </div>
+    <div class="container copyright">© <span id="anio-footer"></span> Reiless Otaku. Todos los derechos reservados.</div>
     <script>document.getElementById('anio-footer').textContent = new Date().getFullYear();</script>
   </footer>
 
-  <a href="https://wa.me/50577002788" class="whatsapp-float" target="_blank" title="Escribinos por WhatsApp">
-    💬
-  </a>
-
+  <a href="https://wa.me/50577002788" class="whatsapp-float" target="_blank" rel="noopener" title="Escríbenos por WhatsApp">💬</a>
   <script src="js/scripts.js"></script>
   <script src="js/funcionalidad.js"></script>
 </body>
