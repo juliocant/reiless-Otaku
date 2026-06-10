@@ -1,48 +1,48 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tienda | Reiless Otaku</title>
   <link rel="icon" href="/img/logo.png" type="image/png" />
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/tienda.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/tienda.css" />
 </head>
 <body class="shop-page">
   <header>
-    <div class="container header-inner">
-      <a href="index.html" class="logo" aria-label="Inicio Reiless Otaku">
-        <img src="img/logo.png" alt="Reiless Otaku Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
-        <div class="brand-text" style="display:none;">REILESS <span>OTAKU オタク</span></div>
-      </a>
+  <div class="container header-inner">
+    <a href="/index.html" class="logo" aria-label="Inicio Reiless Otaku">
+      <img src="/img/logo.png" alt="Reiless Otaku Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+      <div class="brand-text" style="display:none;">REILESS <span>OTAKU オタク</span></div>
+    </a>
 
-      <button id="nav-toggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
-        <span class="hamburger" aria-hidden="true"></span>
-      </button>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
+      <span class="hamburger" aria-hidden="true"></span>
+    </button>
 
-      <nav id="main-nav">
-        <ul>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a class="active" href="tienda.html">Tienda</a></li>
-          <li><a href="#categorias">Categorías</a></li>
-          <li><a href="#mas-vendido">Más vendido</a></li>
-          <li><a href="#contacto-tienda">Contacto</a></li>
-        </ul>
-      </nav>
+    <nav id="main-nav">
+      <ul>
+        <li><a href="/index.html">Inicio</a></li>
+        <li><a href="/tienda.html">Tienda</a></li>
+        <li><a href="/tienda.html#categorias">Categorías</a></li>
+        <li><a href="/tienda.html#mas-vendido">Más vendido</a></li>
+        <li><a href="/tienda.html#contacto-tienda">Contacto</a></li>
+      </ul>
+    </nav>
 
-      <div class="header-actions">
-        <a class="icon-btn" href="#filtros" aria-label="Filtrar productos">⌕</a>
-        <button id="carrito-header-btn" class="icon-btn" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
-      </div>
+    <div class="header-actions">
+      <a class="icon-btn" href="/tienda.html#filtros" aria-label="Filtrar productos">⌕</a>
+      <button id="carrito-header-btn" class="icon-btn" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
     </div>
-  </header>
+  </div>
+</header>
 
   <aside id="vista-previa-carrito" aria-label="Vista previa del carrito">
-    <h3>Carrito</h3>
-    <ul id="lista-carrito"></ul>
-    <a href="carrito.html" class="btn btn-primary">Ver carrito completo</a>
-    <button id="cerrar-carrito" aria-label="Cerrar carrito">×</button>
-  </aside>
+  <h3>Carrito</h3>
+  <ul id="lista-carrito"></ul>
+  <a href="/carrito.html" class="btn btn-primary">Ver carrito completo</a>
+  <button id="cerrar-carrito" aria-label="Cerrar carrito">×</button>
+</aside>
 
   <main>
     <section class="shop-hero">
@@ -58,7 +58,7 @@
         </div>
         <div class="shop-hero-card">
           <div class="hero-product-tag">Diseños exclusivos</div>
-          <img src="img/banner-reiless.png" alt="Productos Reiless Otaku" onerror="this.src='/img/Camiseta jjk/Gojo1.jpg';" />
+          <img src="/img/banner-reiless.png" alt="Productos Reiless Otaku" onerror="this.src='/img/Camiseta jjk/Gojo1.jpg';" />
         </div>
       </div>
     </section>
@@ -249,22 +249,27 @@
   </main>
 
   <footer>
-    <div class="container footer-grid">
-      <div>
-        <a href="index.html" class="logo"><img src="img/logo.png" alt="Reiless Otaku Logo" /></a>
-        <p>Anime, camisetas, tazas, hoodies, impresión 3D y productos personalizados en Nicaragua.</p>
-        <div class="socials"><a href="https://instagram.com/reiless.ni" target="_blank" rel="noopener">IG</a><a href="https://wa.me/50577002788" target="_blank" rel="noopener">WA</a></div>
-      </div>
-      <div><h4>Tienda</h4><ul><li><a href="#categorias">Categorías</a></li><li><a href="#mas-vendido">Lo más vendido</a></li><li><a href="#filtros">Filtros</a></li></ul></div>
-      <div><h4>Productos</h4><ul><li>Camisetas</li><li>Hoodies</li><li>Figuras 3D</li><li>Mamelucos</li></ul></div>
-      <div><h4>Contacto</h4><p>Managua, Nicaragua</p><p><a href="mailto:reilessshirt@gmail.com">reilessshirt@gmail.com</a></p><p><a href="https://wa.me/50577002788" target="_blank" rel="noopener">WhatsApp: 7700-2788</a></p></div>
+  <div class="container footer-grid">
+    <div>
+      <a href="/index.html" class="logo"><img src="/img/logo.png" alt="Reiless Otaku Logo" /></a>
+      <p>Anime, camisetas, tazas, hoodies, impresión 3D y productos personalizados en Nicaragua.</p>
+      <div class="socials"><a href="https://instagram.com/reiless.ni" target="_blank" rel="noopener">IG</a><a href="https://wa.me/50577002788" target="_blank" rel="noopener">WA</a></div>
     </div>
-    <div class="container copyright">© <span id="anio-footer"></span> Reiless Otaku. Todos los derechos reservados.</div>
-    <script>document.getElementById('anio-footer').textContent = new Date().getFullYear();</script>
-  </footer>
+    <div><h4>Tienda</h4><ul><li><a href="/tienda.html">Tienda</a></li><li><a href="/tienda.html#categorias">Categorías</a></li><li><a href="/tienda.html#mas-vendido">Lo más vendido</a></li></ul></div>
+    <div><h4>Productos</h4><ul><li>Camisetas</li><li>Hoodies</li><li>Figuras 3D</li><li>Mamelucos</li></ul></div>
+    <div><h4>Contacto</h4><p>Managua, Nicaragua</p><p><a href="mailto:reilessshirt@gmail.com">reilessshirt@gmail.com</a></p><p><a href="https://wa.me/50577002788" target="_blank" rel="noopener">WhatsApp: 7700-2788</a></p></div>
+  </div>
+</footer>
 
   <a href="https://wa.me/50577002788" class="whatsapp-float" target="_blank" rel="noopener" title="Escríbenos por WhatsApp">💬</a>
-  <script src="js/scripts.js"></script>
-  <script src="js/funcionalidad.js"></script>
+  <script src="/js/scripts.js"></script>
+  <script src="/js/funcionalidad.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+

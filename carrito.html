@@ -1,231 +1,154 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reiless | Carrito</title>
-  <link rel="stylesheet" href="/css/styles.css">
-  <style>
-    /* Small, focused overrides to align carrito visuals with site */
-    .carrito-wrapper { padding: 2.5rem 1rem; }
-    .carrito-inner { max-width: 1100px; margin: 0 auto; background: rgba(255,255,255,0.9); padding: 1.25rem; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
-    .item-carrito { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
-    .item-left { display:flex; gap:1rem; align-items:center; }
-    .item-carrito img { width: 84px; height:84px; object-fit:cover; border-radius:8px; }
-    .item-nombre { font-weight:700; margin:0; }
-    .item-meta { color:#666; font-size:0.95rem; margin-top:6px; }
-    .item-actions { display:flex; align-items:center; gap:0.5rem; }
-    .btn-eliminar { background:#e53935; border:none; color:#fff; padding:0.5rem 0.75rem; border-radius:10px; cursor:pointer; }
-    .btn-eliminar:hover{ opacity:0.95 }
-    .total { font-size:1.25rem; font-weight:700; text-align:right; margin-top:1rem; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrito | Reiless Otaku</title>
+  <link rel="icon" href="/img/logo.png" type="image/png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/tienda.css" />
 </head>
-<body>
-
+<body class="shop-page">
   <header>
-    <div class="logo"><a href="index.html"><img src="img/logo.png" alt="Reiless Logo"></a></div>
+  <div class="container header-inner">
+    <a href="/index.html" class="logo" aria-label="Inicio Reiless Otaku">
+      <img src="/img/logo.png" alt="Reiless Otaku Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+      <div class="brand-text" style="display:none;">REILESS <span>OTAKU オタク</span></div>
+    </a>
+
     <button id="nav-toggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
       <span class="hamburger" aria-hidden="true"></span>
     </button>
-    <nav>
+
+    <nav id="main-nav">
       <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="tienda.html">Tienda</a></li>
-        <li><a href="carrito.html">Carrito</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="/index.html">Inicio</a></li>
+        <li><a href="/tienda.html">Tienda</a></li>
+        <li><a href="/tienda.html#categorias">Categorías</a></li>
+        <li><a href="/tienda.html#mas-vendido">Más vendido</a></li>
+        <li><a href="/tienda.html#contacto-tienda">Contacto</a></li>
       </ul>
     </nav>
-  </header>
+
+    <div class="header-actions">
+      <a class="icon-btn" href="/tienda.html#filtros" aria-label="Filtrar productos">⌕</a>
+      <button id="carrito-header-btn" class="icon-btn" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
+    </div>
+  </div>
+</header>
+<aside id="vista-previa-carrito" aria-label="Vista previa del carrito">
+  <h3>Carrito</h3>
+  <ul id="lista-carrito"></ul>
+  <a href="/carrito.html" class="btn btn-primary">Ver carrito completo</a>
+  <button id="cerrar-carrito" aria-label="Cerrar carrito">×</button>
+</aside>
 
   <main class="carrito-wrapper">
-    <div class="carrito-inner">
-      <h1 style="margin-top:0;">Tu carrito</h1>
-      <p style="margin-top:0.25rem; color:#556;">Revisa los productos seleccionados antes de finalizar tu compra.</p>
-
+    <div class="container carrito-inner">
+      <h1>Tu carrito</h1>
+      <p class="muted">Revisa los productos seleccionados antes de finalizar tu compra.</p>
       <div id="carrito-items" aria-live="polite" style="margin-top:1rem;"></div>
-
       <div class="total" id="total">Total: C$0</div>
-
-      <div style="display:flex; gap:0.75rem; justify-content:flex-end; margin-top:1rem;">
-        <button id="vaciar-carrito-btn" class="boton" style="background:#e53935; border-radius:12px;">Vaciar carrito</button>
-        <a href="tienda.html" class="boton">Seguir comprando</a>
-        <button id="realizar-pedido-btn" class="boton" style="background:#25D366; color:#fff; border-radius:12px;">Realizar pedido</button>
+      <div style="display:flex; gap:0.75rem; flex-wrap: wrap; justify-content:flex-end; margin-top:1rem;">
+        <button id="vaciar-carrito-btn" class="btn btn-secondary">Vaciar carrito</button>
+        <a href="tienda.html" class="btn btn-primary">Seguir comprando</a>
+        <button id="realizar-pedido-btn" class="btn btn-primary">Realizar pedido</button>
       </div>
     </div>
   </main>
 
   <footer>
-    <p>&copy; <span id="anio-footer"></span> Reiless. Todos los derechos reservados.</p>
-    <script>document.getElementById('anio-footer').textContent = new Date().getFullYear();</script>
-  </footer>
+  <div class="container footer-grid">
+    <div>
+      <a href="/index.html" class="logo"><img src="/img/logo.png" alt="Reiless Otaku Logo" /></a>
+      <p>Anime, camisetas, tazas, hoodies, impresión 3D y productos personalizados en Nicaragua.</p>
+      <div class="socials"><a href="https://instagram.com/reiless.ni" target="_blank" rel="noopener">IG</a><a href="https://wa.me/50577002788" target="_blank" rel="noopener">WA</a></div>
+    </div>
+    <div><h4>Tienda</h4><ul><li><a href="/tienda.html">Tienda</a></li><li><a href="/tienda.html#categorias">Categorías</a></li><li><a href="/tienda.html#mas-vendido">Lo más vendido</a></li></ul></div>
+    <div><h4>Productos</h4><ul><li>Camisetas</li><li>Hoodies</li><li>Figuras 3D</li><li>Mamelucos</li></ul></div>
+    <div><h4>Contacto</h4><p>Managua, Nicaragua</p><p><a href="mailto:reilessshirt@gmail.com">reilessshirt@gmail.com</a></p><p><a href="https://wa.me/50577002788" target="_blank" rel="noopener">WhatsApp: 7700-2788</a></p></div>
+  </div>
+</footer>
 
   <script>
-    // Carga carrito (array de objetos {nombre, precio, img, cantidad})
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
     function formatPrice(n){ return Number(n || 0).toFixed(0); }
-
-    function renderCarrito() {
+    function renderCarrito(){
+      const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
       const contenedor = document.getElementById('carrito-items');
       const totalEl = document.getElementById('total');
       contenedor.innerHTML = '';
       let total = 0;
-
-      if(!carrito || carrito.length === 0){
+      if(!carrito.length){
         const empty = document.createElement('p');
         empty.textContent = 'El carrito está vacío.';
         empty.style.padding = '1rem 0';
         contenedor.appendChild(empty);
         totalEl.textContent = 'Total: C$0';
         document.getElementById('vaciar-carrito-btn').disabled = true;
-        document.getElementById('vaciar-carrito-btn').style.opacity = 0.6;
         document.getElementById('realizar-pedido-btn').disabled = true;
-        document.getElementById('realizar-pedido-btn').style.opacity = 0.6;
         return;
       }
-
-      carrito.forEach((item, index) => {
-        // Compatibilidad: si es string, convertir a objeto básico
-        if (typeof item === 'string') {
-          item = { nombre: item, precio: 0, img: '', cantidad: 1 };
-        }
-        total += Number(item.precio || 0) * (item.cantidad || 1);
-
-        const row = document.createElement('div');
-        row.className = 'item-carrito';
-
-        const left = document.createElement('div'); left.className = 'item-left';
-        const img = document.createElement('img'); img.src = item.img || 'img/placeholder.png'; img.alt = item.nombre || 'Producto';
-        const meta = document.createElement('div');
-        const name = document.createElement('p'); name.className = 'item-nombre'; name.textContent = item.nombre || 'Producto sin nombre';
-        const tallaTexto = item.talla ? ` • Talla: ${item.talla}` : '';
-        const sub = document.createElement('div'); sub.className = 'item-meta'; sub.textContent = (item.cantidad ? ('Cantidad: ' + item.cantidad) : '') + tallaTexto;
+      carrito.forEach((item,index)=>{
+        if(typeof item === 'string') item = { nombre:item, precio:0, cantidad:1 };
+        total += Number(item.precio||0)*(item.cantidad||1);
+        const row=document.createElement('div'); row.className='item-carrito';
+        const left=document.createElement('div'); left.className='item-left';
+        const img=document.createElement('img'); img.src=item.img||'/img/placeholder.png'; img.alt=item.nombre||'Producto';
+        const meta=document.createElement('div');
+        const name=document.createElement('p'); name.className='item-nombre'; name.textContent=item.nombre||'Producto';
+        const sub=document.createElement('div'); sub.className='item-meta'; sub.textContent='Cantidad: '+(item.cantidad||1)+(item.talla?(' • Talla: '+item.talla):'');
         meta.appendChild(name); meta.appendChild(sub);
         left.appendChild(img); left.appendChild(meta);
-
-        const actions = document.createElement('div'); actions.className = 'item-actions';
-        const price = document.createElement('div'); price.textContent = 'C$' + formatPrice(Number(item.precio || 0) * (item.cantidad || 1));
-        price.style.fontWeight = '700';
-
-        const del = document.createElement('button');
-        del.className = 'btn-eliminar';
-        del.type = 'button';
-        del.title = 'Eliminar artículo';
-        del.textContent = 'Eliminar';
-        del.addEventListener('click', () => { eliminarItem(index); });
-
+        const actions=document.createElement('div'); actions.className='item-actions';
+        const price=document.createElement('div'); price.textContent='C$'+formatPrice(Number(item.precio||0)*(item.cantidad||1)); price.style.fontWeight='700';
+        const del=document.createElement('button'); del.className='btn-eliminar'; del.type='button'; del.textContent='Eliminar'; del.addEventListener('click',()=>eliminarItem(index));
         actions.appendChild(price); actions.appendChild(del);
-
         row.appendChild(left); row.appendChild(actions);
         contenedor.appendChild(row);
       });
-
-      totalEl.textContent = 'Total: C$' + formatPrice(total);
-      document.getElementById('vaciar-carrito-btn').disabled = false;
-      document.getElementById('vaciar-carrito-btn').style.opacity = 1;
-      document.getElementById('realizar-pedido-btn').disabled = false;
-      document.getElementById('realizar-pedido-btn').style.opacity = 1;
+      totalEl.textContent='Total: C$'+formatPrice(total);
+      document.getElementById('vaciar-carrito-btn').disabled=false;
+      document.getElementById('realizar-pedido-btn').disabled=false;
     }
-
     function eliminarItem(index){
+      const carrito=JSON.parse(localStorage.getItem('carrito'))||[];
       carrito.splice(index,1);
-      localStorage.setItem('carrito', JSON.stringify(carrito));
+      localStorage.setItem('carrito',JSON.stringify(carrito));
       renderCarrito();
     }
-
     function vaciarCarrito(){
       if(!confirm('¿Seguro que quieres vaciar el carrito?')) return;
-      carrito = [];
-      localStorage.setItem('carrito', JSON.stringify(carrito));
+      localStorage.setItem('carrito', JSON.stringify([]));
       renderCarrito();
     }
-
     function realizarPedido(){
-      if(!carrito || carrito.length === 0){
-        alert('El carrito está vacío. Agrega productos antes de realizar el pedido.');
-        return;
-      }
-
-      // Verificar si contiene solo una camisa de C$450 para pago directo.
-      if(carrito.length === 1){
-        let item = carrito[0];
-        if (typeof item === 'string') {
-          item = { nombre: item, precio: 0, cantidad: 1 };
-        }
-        const cantidad = item.cantidad || 1;
-        const precioItem = Number(item.precio || 0) * cantidad;
-        const nombreMinusculas = (item.nombre || '').toLowerCase();
-        const esCamisa = nombreMinusculas.includes('camiseta') || nombreMinusculas.includes('camisa');
-
-        if(esCamisa && precioItem === 450 && cantidad === 1){
-          const pagoDirecto = 'https://pagoconpoket.com/merchant/973d436a-6a93-48e5-9134-05cf800e085b/link/5d6ffeda-51fa-46ce-abc4-1ff16ead7f68';
-          window.open(pagoDirecto, '_blank');
-          return;
-        }
-      }
-      // Verificar si contiene 2 camisas de C$450 para pago directo.
-      // Verificar si contiene 2 camisas de C$450 cada una para pago directo.
-      if(carrito.length === 2){
-
-        let total = 0;
-        let todasSonCamisas = true;
-
-        carrito.forEach(item => {
-
-          if (typeof item === 'string') {
-            item = { nombre: item, precio: 0, cantidad: 1 };
-          }
-
-          const cantidad = item.cantidad || 1;
-          const precioItem = Number(item.precio || 0) * cantidad;
-
-          total += precioItem;
-
-          const nombreMinusculas = (item.nombre || '').toLowerCase();
-
-          const esCamisa =
-            nombreMinusculas.includes('camiseta') ||
-            nombreMinusculas.includes('camisa');
-
-          if(!esCamisa){
-            todasSonCamisas = false;
-          }
-
-        });
-
-        if(todasSonCamisas && total === 900){
-          const pagoDirecto = 'https://pagoconpoket.com/merchant/973d436a-6a93-48e5-9134-05cf800e085b/link/9c518c1a-cb8d-4ba7-a674-fb2cf033f365';
-          window.open(pagoDirecto, '_blank');
-          return;
-        }
-      }
-
-      let mensaje = 'Hola, quiero realizar un pedido desde la tienda Reiless. Detalles:\n\n';
-      let total = 0;
-      carrito.forEach(item => {
-        if (typeof item === 'string') {
-          item = { nombre: item, precio: 0, cantidad: 1 };
-        }
-        const precioItem = Number(item.precio || 0) * (item.cantidad || 1);
-        total += precioItem;
-        const tallaTexto = item.talla ? ` - Talla: ${item.talla}` : '';
-        mensaje += `${item.nombre}${tallaTexto} x${item.cantidad || 1} - C$${formatPrice(precioItem)}\n`;
+      const carrito=JSON.parse(localStorage.getItem('carrito'))||[];
+      if(!carrito.length){ alert('El carrito está vacío. Agrega productos antes de realizar el pedido.'); return; }
+      let mensaje='Hola, quiero realizar un pedido desde la tienda Reiless. Detalles:\n\n';
+      let total=0;
+      carrito.forEach(item=>{
+        if(typeof item==='string') item={nombre:item,precio:0,cantidad:1};
+        total += Number(item.precio||0)*(item.cantidad||1);
+        mensaje += `${item.nombre}${item.talla?(' - Talla '+item.talla):''} x${item.cantidad||1} - C$${formatPrice(Number(item.precio||0)*(item.cantidad||1))}\n`;
       });
       mensaje += `\nTotal: C$${formatPrice(total)}\n\nPor favor, genera un link de pago. Gracias!`;
-
-      const numeroWhatsApp = '50577002788'; // Número de la tienda
-      const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-      window.open(url, '_blank');
+      window.open(`https://wa.me/50577002788?text=${encodeURIComponent(mensaje)}`, '_blank');
     }
-
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded',()=>{
       renderCarrito();
       document.getElementById('vaciar-carrito-btn').addEventListener('click', vaciarCarrito);
       document.getElementById('realizar-pedido-btn').addEventListener('click', realizarPedido);
     });
   </script>
 
-  <script src="js/scripts.js"></script>
-  <script src="js/funcionalidad.js"></script>
+  <script src="/js/scripts.js"></script>
+  <script src="/js/funcionalidad.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+

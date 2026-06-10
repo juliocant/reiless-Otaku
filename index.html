@@ -1,70 +1,70 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reiless Otaku | Anime, camisetas, tazas, hoodies e impresión 3D</title>
+  <title>Reiless Otaku | Anime, camisetas, tazas, hoodies e impresiÃ³n 3D</title>
   <link rel="icon" href="/img/logo.png" type="image/png" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/tienda.css" />
 
 </head>
-<body>
+<body class="shop-page">
   <header>
-    <div class="container header-inner">
-      <a href="index.html" class="logo" aria-label="Inicio Reiless Otaku">
-        <img src="img/logo.png" alt="Reiless Otaku Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
-        <div class="brand-text" style="display:none;">REILESS <span>OTAKU オタク</span></div>
-      </a>
+  <div class="container header-inner">
+    <a href="/index.html" class="logo" aria-label="Inicio Reiless Otaku">
+      <img src="/img/logo.png" alt="Reiless Otaku Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+      <div class="brand-text" style="display:none;">REILESS <span>OTAKU オタク</span></div>
+    </a>
 
-      <button id="nav-toggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
-        <span class="hamburger" aria-hidden="true"></span>
-      </button>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
+      <span class="hamburger" aria-hidden="true"></span>
+    </button>
 
-      <nav id="main-nav">
-        <ul>
-          <li><a class="active" href="#inicio">Inicio</a></li>
-          <li><a href="tienda.html">Tienda</a></li>
-          <li><a href="#colecciones">Colecciones</a></li>
-          <li><a href="#impresion-3d">Impresión 3D</a></li>
-          <li><a href="#sobre">Nosotros</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </nav>
+    <nav id="main-nav">
+      <ul>
+        <li><a href="/index.html">Inicio</a></li>
+        <li><a href="/tienda.html">Tienda</a></li>
+        <li><a href="/tienda.html#categorias">Categorías</a></li>
+        <li><a href="/tienda.html#mas-vendido">Más vendido</a></li>
+        <li><a href="/tienda.html#contacto-tienda">Contacto</a></li>
+      </ul>
+    </nav>
 
-      <div class="header-actions">
-        <a class="icon-btn" href="tienda.html" aria-label="Buscar productos">⌕</a>
-        <button id="carrito-header-btn" class="icon-btn" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
-      </div>
+    <div class="header-actions">
+      <a class="icon-btn" href="/tienda.html#filtros" aria-label="Filtrar productos">⌕</a>
+      <button id="carrito-header-btn" class="icon-btn" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
     </div>
-  </header>
+  </div>
+</header>
 
   <aside id="vista-previa-carrito" aria-label="Vista previa del carrito">
-    <button id="cerrar-carrito" aria-label="Cerrar carrito" style="float:right;background:none;border:0;color:white;font-size:1.3rem;cursor:pointer;">×</button>
-    <h3 style="margin-bottom:12px;">Carrito</h3>
-    <ul id="lista-carrito" style="list-style:none;display:grid;gap:8px;max-height:200px;overflow:auto;"></ul>
-    <a href="carrito.html" class="btn btn-primary" style="width:100%;margin-top:14px;min-height:44px;">Ver carrito completo</a>
-  </aside>
+  <h3>Carrito</h3>
+  <ul id="lista-carrito"></ul>
+  <a href="/carrito.html" class="btn btn-primary">Ver carrito completo</a>
+  <button id="cerrar-carrito" aria-label="Cerrar carrito">×</button>
+</aside>
 
   <main>
     <section id="inicio" class="hero">
       <div class="container hero-content">
         <div class="eyebrow">Para verdaderos otakus</div>
-        <h1>Tu pasión.<br>Tu estilo.<br><span>Tu mundo.</span></h1>
-        <p>Camisetas, tazas, hoodies, figuras e impresión 3D para llevar tu fandom al siguiente nivel.</p>
+        <h1>Tu pasiÃ³n.<br>Tu estilo.<br><span>Tu mundo.</span></h1>
+        <p>Camisetas, tazas, hoodies, figuras e impresiÃ³n 3D para llevar tu fandom al siguiente nivel.</p>
         <div class="buttons">
-          <a href="tienda.html" class="btn btn-primary">Ir a la tienda →</a>
+          <a href="tienda.html" class="btn btn-primary">Ir a la tienda â†’</a>
           <a href="#colecciones" class="btn btn-secondary">Ver colecciones</a>
         </div>
       </div>
     </section>
 
     <div class="container">
-      <section class="quick-cats" aria-label="Categorías principales">
-        <a class="cat" href="/camisetas/index.html"><div><div class="cat-icon">👕</div><h3>Camisetas</h3><p>Diseños épicos</p></div></a>
-        <a class="cat" href="#otros-productos"><div><div class="cat-icon">☕</div><h3>Tazas</h3><p>Para tu rutina otaku</p></div></a>
-        <a class="cat" href="#hoddies"><div><div class="cat-icon">🧥</div><h3>Hoodies</h3><p>Comodidad y estilo</p></div></a>
-        <a class="cat" href="#impresion-3d"><div><div class="cat-icon">🖨️</div><h3>Impresión 3D</h3><p>Figuras y piezas</p></div></a>
-        <a class="cat" href="#papeleria"><div><div class="cat-icon">📓</div><h3>Papelería</h3><p>Agendas y libretas</p></div></a>
+      <section class="quick-cats" aria-label="CategorÃ­as principales">
+        <a class="cat" href="/camisetas/index.html"><div><div class="cat-icon">ðŸ‘•</div><h3>Camisetas</h3><p>DiseÃ±os Ã©picos</p></div></a>
+        <a class="cat" href="#otros-productos"><div><div class="cat-icon">â˜•</div><h3>Tazas</h3><p>Para tu rutina otaku</p></div></a>
+        <a class="cat" href="#hoddies"><div><div class="cat-icon">ðŸ§¥</div><h3>Hoodies</h3><p>Comodidad y estilo</p></div></a>
+        <a class="cat" href="#impresion-3d"><div><div class="cat-icon">ðŸ–¨ï¸</div><h3>ImpresiÃ³n 3D</h3><p>Figuras y piezas</p></div></a>
+        <a class="cat" href="#papeleria"><div><div class="cat-icon">ðŸ““</div><h3>PapelerÃ­a</h3><p>Agendas y libretas</p></div></a>
       </section>
     </div>
 
@@ -73,34 +73,34 @@
         <div class="section-head">
           <div>
             <div class="section-kicker">Productos destacados</div>
-            <h2>Lo más épico para ti</h2>
+            <h2>Lo mÃ¡s Ã©pico para ti</h2>
           </div>
-          <a href="tienda.html" class="btn btn-secondary">Ver todos →</a>
+          <a href="tienda.html" class="btn btn-secondary">Ver todos â†’</a>
         </div>
 
         <div class="product-grid">
           <article class="product-card">
             <a href="/camisetas/JJK%20coleccion/gojo.html">
               <div class="product-img"><img src="/img/Camiseta jjk/Gojo1.jpg" alt="Camiseta Gojo Satoru" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f455.svg';"></div>
-              <div class="product-body"><h3>Camiseta Gojo</h3><p>Diseño exclusivo inspirado en Jujutsu Kaisen.</p><div class="price-row"><span class="price">C$450</span><span class="mini-btn">🛒</span></div></div>
+              <div class="product-body"><h3>Camiseta Gojo</h3><p>DiseÃ±o exclusivo inspirado en Jujutsu Kaisen.</p><div class="price-row"><span class="price">C$450</span><span class="mini-btn">ðŸ›’</span></div></div>
             </a>
           </article>
           <article class="product-card">
             <a href="#otros-productos">
               <div class="product-img"><img src="/img/tazas/taza-anime.jpg" alt="Taza anime personalizada" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2615.svg';"></div>
-              <div class="product-body"><h3>Taza Anime</h3><p>Tazas personalizadas con acabado brillante.</p><div class="price-row"><span class="price">C$180</span><span class="mini-btn">🛒</span></div></div>
+              <div class="product-body"><h3>Taza Anime</h3><p>Tazas personalizadas con acabado brillante.</p><div class="price-row"><span class="price">C$180</span><span class="mini-btn">ðŸ›’</span></div></div>
             </a>
           </article>
           <article class="product-card">
             <a href="hoddies.html">
               <div class="product-img"><img src="/img/Hoddies/hollow.jpg" alt="Hoodie Hollow Knight" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f455.svg';"></div>
-              <div class="product-body"><h3>Hoodie Hollow Knight</h3><p>Estilo oscuro para fans gamer y anime.</p><div class="price-row"><span class="price">C$880</span><span class="mini-btn">🛒</span></div></div>
+              <div class="product-body"><h3>Hoodie Hollow Knight</h3><p>Estilo oscuro para fans gamer y anime.</p><div class="price-row"><span class="price">C$880</span><span class="mini-btn">ðŸ›’</span></div></div>
             </a>
           </article>
           <article class="product-card">
             <a href="figuras.html">
               <div class="product-img"><img src="/img/Figuras/gengar.jpg" alt="Figura Gengar 3D" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f47b.svg';"></div>
-              <div class="product-body"><h3>Figura Gengar 3D</h3><p>Figuras, llaveros y piezas hechas por fans.</p><div class="price-row"><span class="price">C$1000</span><span class="mini-btn">🛒</span></div></div>
+              <div class="product-body"><h3>Figura Gengar 3D</h3><p>Figuras, llaveros y piezas hechas por fans.</p><div class="price-row"><span class="price">C$1000</span><span class="mini-btn">ðŸ›’</span></div></div>
             </a>
           </article>
         </div>
@@ -113,9 +113,9 @@
           <div style="max-width:680px;">
             <div class="section-kicker">Colecciones</div>
             <h2>Tu anime favorito, en un solo lugar.</h2>
-            <p class="muted" style="margin-top:14px;">Explora camisetas, tazas, hoodies y artículos personalizados inspirados en tus fandoms favoritos.</p>
+            <p class="muted" style="margin-top:14px;">Explora camisetas, tazas, hoodies y artÃ­culos personalizados inspirados en tus fandoms favoritos.</p>
             <div class="anime-tags">
-              <span class="tag">Naruto</span><span class="tag">One Piece</span><span class="tag">BTS</span><span class="tag">Demon Slayer</span><span class="tag">Dragon Ball</span><span class="tag">Pokémon</span>
+              <span class="tag">Naruto</span><span class="tag">One Piece</span><span class="tag">BTS</span><span class="tag">Demon Slayer</span><span class="tag">Dragon Ball</span><span class="tag">PokÃ©mon</span>
             </div>
             <a href="tienda.html" class="btn btn-primary">Ver colecciones</a>
           </div>
@@ -126,48 +126,48 @@
     <section id="impresion-3d">
       <div class="container">
         <div class="section-head">
-          <div><div class="section-kicker">Impresión 3D</div><h2>Figuras y piezas personalizadas</h2></div>
-          <a href="figuras.html" class="btn btn-secondary">Ver figuras →</a>
+          <div><div class="section-kicker">ImpresiÃ³n 3D</div><h2>Figuras y piezas personalizadas</h2></div>
+          <a href="figuras.html" class="btn btn-secondary">Ver figuras â†’</a>
         </div>
         <div class="product-grid">
-          <article class="product-card"><div class="product-img"><img src="/img/Figuras/gojo.jpg" alt="Figura Gojo" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f9e9.svg';"></div><div class="product-body"><h3>Gojo Crochet</h3><p>Figura artesanal para colección.</p><div class="price-row"><span class="price">C$1500</span><a class="mini-btn" href="figuras.html">→</a></div></div></article>
-          <article class="product-card"><div class="product-img"><img src="/img/Figuras/luffy.jpg" alt="Figura Luffy" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f9e9.svg';"></div><div class="product-body"><h3>Luffy Crochet</h3><p>Perfecto para fans de One Piece.</p><div class="price-row"><span class="price">C$1500</span><a class="mini-btn" href="figuras.html">→</a></div></div></article>
-          <article class="product-card"><div class="product-img"><img src="/img/Figuras/gengar.jpg" alt="Figura Gengar" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f47b.svg';"></div><div class="product-body"><h3>Gengar 3D</h3><p>Acabado brillante y detalles fieles.</p><div class="price-row"><span class="price">C$1000</span><a class="mini-btn" href="figuras.html">→</a></div></div></article>
-          <article class="product-card"><div class="product-img"><img src="/img/Figuras/hollow.jpg" alt="Figura Hollow Knight" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f47e.svg';"></div><div class="product-body"><h3>Hollow Knight</h3><p>Mini figura gamer para escritorio.</p><div class="price-row"><span class="price">C$300</span><a class="mini-btn" href="figuras.html">→</a></div></div></article>
+          <article class="product-card"><div class="product-img"><img src="/img/Figuras/gojo.jpg" alt="Figura Gojo" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f9e9.svg';"></div><div class="product-body"><h3>Gojo Crochet</h3><p>Figura artesanal para colecciÃ³n.</p><div class="price-row"><span class="price">C$1500</span><a class="mini-btn" href="figuras.html">â†’</a></div></div></article>
+          <article class="product-card"><div class="product-img"><img src="/img/Figuras/luffy.jpg" alt="Figura Luffy" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f9e9.svg';"></div><div class="product-body"><h3>Luffy Crochet</h3><p>Perfecto para fans de One Piece.</p><div class="price-row"><span class="price">C$1500</span><a class="mini-btn" href="figuras.html">â†’</a></div></div></article>
+          <article class="product-card"><div class="product-img"><img src="/img/Figuras/gengar.jpg" alt="Figura Gengar" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f47b.svg';"></div><div class="product-body"><h3>Gengar 3D</h3><p>Acabado brillante y detalles fieles.</p><div class="price-row"><span class="price">C$1000</span><a class="mini-btn" href="figuras.html">â†’</a></div></div></article>
+          <article class="product-card"><div class="product-img"><img src="/img/Figuras/hollow.jpg" alt="Figura Hollow Knight" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f47e.svg';"></div><div class="product-body"><h3>Hollow Knight</h3><p>Mini figura gamer para escritorio.</p><div class="price-row"><span class="price">C$300</span><a class="mini-btn" href="figuras.html">â†’</a></div></div></article>
         </div>
       </div>
     </section>
 
     <section id="hoddies">
       <div class="container">
-        <div class="section-head"><div><div class="section-kicker">Hoodies destacados</div><h2>Comodidad con fandom</h2></div><a href="hoddies.html" class="btn btn-secondary">Ver hoodies →</a></div>
+        <div class="section-head"><div><div class="section-kicker">Hoodies destacados</div><h2>Comodidad con fandom</h2></div><a href="hoddies.html" class="btn btn-secondary">Ver hoodies â†’</a></div>
         <div class="product-grid">
-          <article class="product-card"><div class="product-img"><img src="/img/Hoddies/lol.jpg" alt="Hoodie League of Legends" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f455.svg';"></div><div class="product-body"><h3>Hoodie LOL</h3><p>Inspirado en League of Legends.</p><div class="price-row"><span class="price">C$880</span><a class="mini-btn" href="hoddies.html">→</a></div></div></article>
-          <article class="product-card"><div class="product-img"><img src="/img/Hoddies/onepiece.jpg" alt="Hoodie One Piece" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f455.svg';"></div><div class="product-body"><h3>Hoodie Luffy</h3><p>Para fans de One Piece.</p><div class="price-row"><span class="price">C$880</span><a class="mini-btn" href="hoddies.html">→</a></div></div></article>
-          <article class="product-card"><div class="product-img"><img src="/img/Hoddies/hollow.jpg" alt="Hoodie Hollow Knight" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f408.svg';"></div><div class="product-body"><h3>Hoodie Hollow Knight</h3><p>Estilo oscuro y gamer.</p><div class="price-row"><span class="price">C$880</span><a class="mini-btn" href="hoddies.html">→</a></div></div></article>
-          <article class="product-card"><div class="product-img"><img src="/img/Hoddies/atack.jpg" alt="Hoodie Attack on Titan" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f455.svg';"></div><div class="product-body"><h3>Hoodie Attack on Titan</h3><p>Diseño temático con estilo único.</p><div class="price-row"><span class="price">C$700</span><a class="mini-btn" href="hoddies.html">→</a></div></div></article>
+          <article class="product-card"><div class="product-img"><img src="/img/Hoddies/lol.jpg" alt="Hoodie League of Legends" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f455.svg';"></div><div class="product-body"><h3>Hoodie LOL</h3><p>Inspirado en League of Legends.</p><div class="price-row"><span class="price">C$880</span><a class="mini-btn" href="hoddies.html">â†’</a></div></div></article>
+          <article class="product-card"><div class="product-img"><img src="/img/Hoddies/onepiece.jpg" alt="Hoodie One Piece" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f455.svg';"></div><div class="product-body"><h3>Hoodie Luffy</h3><p>Para fans de One Piece.</p><div class="price-row"><span class="price">C$880</span><a class="mini-btn" href="hoddies.html">â†’</a></div></div></article>
+          <article class="product-card"><div class="product-img"><img src="/img/Hoddies/hollow.jpg" alt="Hoodie Hollow Knight" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f408.svg';"></div><div class="product-body"><h3>Hoodie Hollow Knight</h3><p>Estilo oscuro y gamer.</p><div class="price-row"><span class="price">C$880</span><a class="mini-btn" href="hoddies.html">â†’</a></div></div></article>
+          <article class="product-card"><div class="product-img"><img src="/img/Hoddies/atack.jpg" alt="Hoodie Attack on Titan" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f455.svg';"></div><div class="product-body"><h3>Hoodie Attack on Titan</h3><p>DiseÃ±o temÃ¡tico con estilo Ãºnico.</p><div class="price-row"><span class="price">C$700</span><a class="mini-btn" href="hoddies.html">â†’</a></div></div></article>
         </div>
       </div>
     </section>
 
     <section id="papeleria">
       <div class="container">
-        <div class="section-head"><div><div class="section-kicker">Papelería creativa</div><h2>Agendas, libretas y detalles</h2></div></div>
+        <div class="section-head"><div><div class="section-kicker">PapelerÃ­a creativa</div><h2>Agendas, libretas y detalles</h2></div></div>
         <div class="product-grid">
-          <article class="product-card"><div class="product-img"><img src="/img/agendas/agenda-anime.jpg" alt="Agenda Anime" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4d3.svg';"></div><div class="product-body"><h3>Agenda Anime</h3><p>Organiza tus días con estilo otaku.</p><div class="price-row"><span class="price">C$250</span><span class="mini-btn">→</span></div></div></article>
-          <article class="product-card"><div class="product-img"><img src="/img/agendas/agenda-gamer.jpg" alt="Agenda Gamer" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4d3.svg';"></div><div class="product-body"><h3>Agenda Gamer</h3><p>Con stickers y extras temáticos.</p><div class="price-row"><span class="price">C$260</span><span class="mini-btn">→</span></div></div></article>
-          <article class="product-card"><div class="product-img"><img src="/img/llaveros/llavero-anime.jpg" alt="Llavero anime" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f511.svg';"></div><div class="product-body"><h3>Llaveros Anime</h3><p>Detalles pequeños para fans grandes.</p><div class="price-row"><span class="price">C$90</span><span class="mini-btn">→</span></div></div></article>
-          <article class="product-card"><div class="product-img"><img src="/img/totebags/totebag-anime.jpg" alt="Tote Bag Anime" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f45c.svg';"></div><div class="product-body"><h3>Tote Bag Anime</h3><p>Resistente, práctica y personalizada.</p><div class="price-row"><span class="price">C$220</span><span class="mini-btn">→</span></div></div></article>
+          <article class="product-card"><div class="product-img"><img src="/img/agendas/agenda-anime.jpg" alt="Agenda Anime" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4d3.svg';"></div><div class="product-body"><h3>Agenda Anime</h3><p>Organiza tus dÃ­as con estilo otaku.</p><div class="price-row"><span class="price">C$250</span><span class="mini-btn">â†’</span></div></div></article>
+          <article class="product-card"><div class="product-img"><img src="/img/agendas/agenda-gamer.jpg" alt="Agenda Gamer" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4d3.svg';"></div><div class="product-body"><h3>Agenda Gamer</h3><p>Con stickers y extras temÃ¡ticos.</p><div class="price-row"><span class="price">C$260</span><span class="mini-btn">â†’</span></div></div></article>
+          <article class="product-card"><div class="product-img"><img src="/img/llaveros/llavero-anime.jpg" alt="Llavero anime" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f511.svg';"></div><div class="product-body"><h3>Llaveros Anime</h3><p>Detalles pequeÃ±os para fans grandes.</p><div class="price-row"><span class="price">C$90</span><span class="mini-btn">â†’</span></div></div></article>
+          <article class="product-card"><div class="product-img"><img src="/img/totebags/totebag-anime.jpg" alt="Tote Bag Anime" onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f45c.svg';"></div><div class="product-body"><h3>Tote Bag Anime</h3><p>Resistente, prÃ¡ctica y personalizada.</p><div class="price-row"><span class="price">C$220</span><span class="mini-btn">â†’</span></div></div></article>
         </div>
       </div>
     </section>
 
     <section>
       <div class="container benefits">
-        <div class="benefit"><span>🚚</span><div><strong>Entrega rápida</strong><p>Atención ágil y productos con seguimiento.</p></div></div>
-        <div class="benefit"><span>🛡️</span><div><strong>Compra segura</strong><p>Cuidamos cada pedido y cada detalle.</p></div></div>
-        <div class="benefit"><span>✨</span><div><strong>Diseños únicos</strong><p>Productos pensados para fans exigentes.</p></div></div>
-        <div class="benefit"><span>💜</span><div><strong>Hecho por fans</strong><p>Sabemos lo que significa amar un fandom.</p></div></div>
+        <div class="benefit"><span>ðŸšš</span><div><strong>Entrega rÃ¡pida</strong><p>AtenciÃ³n Ã¡gil y productos con seguimiento.</p></div></div>
+        <div class="benefit"><span>ðŸ›¡ï¸</span><div><strong>Compra segura</strong><p>Cuidamos cada pedido y cada detalle.</p></div></div>
+        <div class="benefit"><span>âœ¨</span><div><strong>DiseÃ±os Ãºnicos</strong><p>Productos pensados para fans exigentes.</p></div></div>
+        <div class="benefit"><span>ðŸ’œ</span><div><strong>Hecho por fans</strong><p>Sabemos lo que significa amar un fandom.</p></div></div>
       </div>
     </section>
 
@@ -176,9 +176,9 @@
         <div class="about-img"><img src="/img/sobre-reiless.jpg" alt="Tienda Reiless Otaku" onerror="this.src='/img/Camiseta jjk/Gojo1.jpg';"></div>
         <div class="about-copy">
           <div class="section-kicker">Sobre Reiless</div>
-          <h2>Más que productos, momentos para fans.</h2>
-          <p>En Reiless Otaku creemos que la personalización es una forma de expresión. Creamos camisetas, tazas, hoodies, papelería e impresión 3D inspirados en anime, K-pop, cultura geek y tus historias favoritas.</p>
-          <a href="#contacto" class="btn btn-primary">Conócenos →</a>
+          <h2>MÃ¡s que productos, momentos para fans.</h2>
+          <p>En Reiless Otaku creemos que la personalizaciÃ³n es una forma de expresiÃ³n. Creamos camisetas, tazas, hoodies, papelerÃ­a e impresiÃ³n 3D inspirados en anime, K-pop, cultura geek y tus historias favoritas.</p>
+          <a href="#contacto" class="btn btn-primary">ConÃ³cenos â†’</a>
         </div>
       </div>
     </section>
@@ -186,13 +186,13 @@
     <section id="contacto">
       <div class="container contact-card">
         <div class="section-head" style="margin-bottom:0;">
-          <div><div class="section-kicker">Contacto</div><h2>¿Quieres personalizar algo?</h2><p class="muted" style="margin-top:12px;">Escríbenos y hacemos realidad tu idea.</p></div>
-          <a href="https://wa.me/50577002788" class="btn btn-primary" target="_blank" rel="noopener">WhatsApp →</a>
+          <div><div class="section-kicker">Contacto</div><h2>Â¿Quieres personalizar algo?</h2><p class="muted" style="margin-top:12px;">EscrÃ­benos y hacemos realidad tu idea.</p></div>
+          <a href="https://wa.me/50577002788" class="btn btn-primary" target="_blank" rel="noopener">WhatsApp â†’</a>
         </div>
         <form class="contact-grid">
           <input type="text" placeholder="Tu nombre" required>
           <input type="email" placeholder="Tu correo" required>
-          <textarea placeholder="Cuéntanos qué producto o diseño quieres..."></textarea>
+          <textarea placeholder="CuÃ©ntanos quÃ© producto o diseÃ±o quieres..."></textarea>
           <button type="submit" class="btn btn-primary" style="border:0;cursor:pointer;">Enviar mensaje</button>
         </form>
       </div>
@@ -200,20 +200,19 @@
   </main>
 
   <footer>
-    <div class="container footer-grid">
-      <div>
-        <div class="brand-text">REILESS <span>OTAKU オタク</span></div>
-        <p style="margin-top:14px;">Productos de anime, K-pop, cultura pop e impresión 3D en Nicaragua.</p>
-        <div class="socials"><a href="https://instagram.com/reiless.ni" target="_blank" rel="noopener">IG</a><a href="#">TT</a><a href="#">FB</a><a href="#">YT</a></div>
-      </div>
-      <div><h4>Información</h4><ul><li><a href="tienda.html">Tienda</a></li><li><a href="#colecciones">Colecciones</a></li><li><a href="#impresion-3d">Impresión 3D</a></li><li><a href="#sobre">Nosotros</a></li></ul></div>
-      <div><h4>Ayuda</h4><ul><li><a href="#contacto">Contacto</a></li><li><a href="https://wa.me/50577002788" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="mailto:reilessshirt@gmail.com">Correo</a></li><li>Managua, Nicaragua</li></ul></div>
-      <div><h4>Ubicaciones</h4><p>Casa Diseña<br>Residencial Las Brisas<br>Próximamente Diriamba</p><p style="margin-top:12px;">Horario: 9:00 a.m. – 7:00 p.m.</p></div>
+  <div class="container footer-grid">
+    <div>
+      <a href="/index.html" class="logo"><img src="/img/logo.png" alt="Reiless Otaku Logo" /></a>
+      <p>Anime, camisetas, tazas, hoodies, impresión 3D y productos personalizados en Nicaragua.</p>
+      <div class="socials"><a href="https://instagram.com/reiless.ni" target="_blank" rel="noopener">IG</a><a href="https://wa.me/50577002788" target="_blank" rel="noopener">WA</a></div>
     </div>
-    <div class="container copyright"><p>&copy; <span id="anio-footer"></span> Reiless Otaku. Todos los derechos reservados.</p></div>
-  </footer>
+    <div><h4>Tienda</h4><ul><li><a href="/tienda.html">Tienda</a></li><li><a href="/tienda.html#categorias">Categorías</a></li><li><a href="/tienda.html#mas-vendido">Lo más vendido</a></li></ul></div>
+    <div><h4>Productos</h4><ul><li>Camisetas</li><li>Hoodies</li><li>Figuras 3D</li><li>Mamelucos</li></ul></div>
+    <div><h4>Contacto</h4><p>Managua, Nicaragua</p><p><a href="mailto:reilessshirt@gmail.com">reilessshirt@gmail.com</a></p><p><a href="https://wa.me/50577002788" target="_blank" rel="noopener">WhatsApp: 7700-2788</a></p></div>
+  </div>
+</footer>
 
-  <a href="https://wa.me/50577002788" class="whatsapp-float" target="_blank" rel="noopener" title="Escríbenos por WhatsApp">💬</a>
+  <a href="https://wa.me/50577002788" class="whatsapp-float" target="_blank" rel="noopener" title="EscrÃ­benos por WhatsApp">ðŸ’¬</a>
 
   <script>
     document.getElementById('anio-footer').textContent = new Date().getFullYear();
@@ -232,9 +231,16 @@
     const cartList = document.getElementById('lista-carrito');
     cartBtn?.addEventListener('click', () => {
       cartAside.style.display = cartAside.style.display === 'block' ? 'none' : 'block';
-      if (cartList && !cartList.children.length) cartList.innerHTML = '<li class="muted">Tu carrito está vacío por ahora.</li>';
+      if (cartList && !cartList.children.length) cartList.innerHTML = '<li class="muted">Tu carrito estÃ¡ vacÃ­o por ahora.</li>';
     });
     closeCart?.addEventListener('click', () => cartAside.style.display = 'none');
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
