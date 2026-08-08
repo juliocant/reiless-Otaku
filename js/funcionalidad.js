@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     enlace.addEventListener("click", function (e) {
       e.preventDefault();
       const productoEl = this.closest('.producto') || this.closest('.detalle-producto') || this.closest('.product-detail') || this.closest('.product-info');
-      const nombre = productoEl ? productoEl.querySelector('h3, h1')?.textContent || this.dataset.producto : this.dataset.producto;
+      const nombre = this.dataset.producto?.trim() || (productoEl ? productoEl.querySelector('h3, h1')?.textContent?.trim() : 'Producto');
       const img = productoEl ? productoEl.querySelector('img')?.src || '' : '';
       const precioTexto = productoEl ? productoEl.querySelector('.product-price, span, .precio')?.textContent || '0' : '0';
       const precio = parseFloat((precioTexto || '').replace(/[^\d.]/g, '')) || 0;
