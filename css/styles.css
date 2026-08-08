@@ -43,7 +43,7 @@
       justify-content: space-between;
       gap: 20px;
     }
-    .logo img { width: 145px; height: auto; }
+    .logo img { width: 55px; height: auto; }
     .brand-text {
       font-weight: 1000;
       letter-spacing: -1px;
@@ -52,7 +52,7 @@
     }
     .brand-text span { display: block; color: var(--purple-2); font-size: .8rem; letter-spacing: 1.5px; }
     nav ul { display: flex; align-items: center; gap: 30px; list-style: none; }
-    nav a { color: #f4f4f8; font-size: .96rem; font-weight: 650; opacity: .88; }
+    nav a { color: #f4f4f8; font-size: 1.50rem; line-height: 1.1; font-weight: 650; opacity: .88; }
     nav a:hover, nav a.active { color: var(--purple-2); opacity: 1; }
     .header-actions { display: flex; align-items: center; gap: 12px; }
     .icon-btn, .nav-toggle {
@@ -87,7 +87,7 @@
       background:
         linear-gradient(90deg, rgba(6,6,8,.98) 0%, rgba(6,6,8,.86) 38%, rgba(6,6,8,.28) 70%),
         url('/img/hero-reiless.webp'),
-        url('/img/Camiseta jjk/Gojo1.jpg');
+        url('/img/Camiseta jjk/Gojo.png');
       background-size: cover;
       background-position: center right;
       opacity: .96;

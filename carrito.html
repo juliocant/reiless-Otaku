@@ -7,6 +7,53 @@
   <link rel="icon" href="/img/logo.png" type="image/png" />
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/css/tienda.css" />
+  <style>
+    .item-carrito {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+    .item-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+    .item-left img {
+      width: 84px;
+      height: 84px;
+      object-fit: cover;
+      border-radius: 18px;
+      flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .item-meta { display: grid; gap: 6px; min-width: 0; }
+    .item-nombre { font-weight: 900; margin: 0; font-size: 1rem; }
+    .item-meta .item-nombre + .item-meta { margin-top: 4px; }
+    .item-meta div { color: var(--muted); font-size: .92rem; }
+    .item-actions {
+      display: grid;
+      gap: 10px;
+      text-align: right;
+      align-items: flex-end;
+      min-width: 96px;
+    }
+    .item-actions div { font-weight: 700; }
+    .btn-eliminar {
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: #fff;
+      border-radius: 12px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .btn-eliminar:hover { background: rgba(255,255,255,.12); }
+  </style>
 </head>
 <body class="shop-page">
   <header>

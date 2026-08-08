@@ -57,7 +57,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const precioTexto = productoEl ? productoEl.querySelector('.product-price, span, .precio')?.textContent || '0' : '0';
       const precio = parseFloat((precioTexto || '').replace(/[^\d.]/g, '')) || 0;
       const descripcion = productoEl ? productoEl.querySelector('p')?.textContent || '' : '';
-      const tallaSelect = productoEl ? productoEl.querySelector('.talla-select') : null;
+      const tallaContainer = productoEl ? productoEl.querySelector('.talla-select') : null;
+      const tallaSelect = tallaContainer ? tallaContainer.querySelector('select') : null;
       const talla = tallaSelect ? tallaSelect.value : '';
 
       if (tallaSelect && (!talla || talla === '')) {
