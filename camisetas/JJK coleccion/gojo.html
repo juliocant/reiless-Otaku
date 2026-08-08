@@ -46,29 +46,49 @@
 </aside>
 
   <main class="productos">
-    <h1>Variantes de Satoru Gojo</h1>
-    <div class="selector-variante">
-      <div class="miniaturas">
-        <img src="/img/Camiseta jjk/gojo1.jpg" class="miniatura activa" data-variante="1" alt="Gojo Variante 1">
-        <img src="/img/Camiseta jjk/9.jpg" class="miniatura" data-variante="2" alt="Gojo Variante 2">
-        <img src="/img/Camiseta jjk/20.jpg" class="miniatura" data-variante="3" alt="Gojo Variante 3">
-        <img src="/img/Camiseta jjk/16.jpg" class="miniatura" data-variante="4" alt="Gojo Variante 4">
-      </div>
-      <div class="vista-principal">
-        <img id="imagen-principal" src="https://via.placeholder.com/400x500?text=Gojo+Variante+1" alt="Gojo Variante 1">
-        <h2 id="titulo-principal">Gojo Variante 1</h2>
-        <p id="descripcion-principal">VersiÃ³n alternativa para fans del estilo clÃ¡sico.</p>
-        <div class="talla-select">
-          <label for="talla">Talla:</label>
-          <select id="talla">
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-          </select>
+    <div class="container">
+      <section class="product-detail">
+        <div class="product-detail-grid">
+          <div class="product-gallery">
+            <div class="gallery-main">
+              <img id="imagen-principal" src="/img/Camiseta jjk/Gojo.png" alt="Camiseta Satoru Gojo">
+            </div>
+            <div class="miniaturas">
+              <img src="/img/Camiseta jjk/Gojo.png" class="miniatura activa" data-variante="1" alt="Satoru Gojo">
+              <img src="/img/Camiseta jjk/Gojo2.png" class="miniatura" data-variante="2" alt="Gojo Variante 2">
+              <img src="/img/Camiseta jjk/Gojo3.png" class="miniatura" data-variante="3" alt="Gojo Variante 3">
+              <img src="/img/Camiseta jjk/Gojo4.png" class="miniatura" data-variante="4" alt="Gojo Variante 4">
+            </div>
+          </div>
+
+          <div class="product-info">
+            <p class="section-kicker">Jujutsu Kaisen</p>
+            <h1 id="titulo-principal">Variantes de Satoru Gojo</h1>
+            <p class="product-price" id="precio-principal">C$450</p>
+            <p id="descripcion-principal">Camisetas oficiales con diseños exclusivos de Gojo para tu colección otaku.</p>
+            <ul class="product-features">
+              <li>100% algodón premium</li>
+              <li>Estampado resistente al lavado</li>
+              <li>Corte cómodo y urbano</li>
+              <li>Disponible en tallas S, M, L y XL</li>
+            </ul>
+            <div class="talla-select">
+              <label for="talla">Selecciona talla</label>
+              <select id="talla">
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+              </select>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn btn-primary agregar-carrito" data-producto="Camiseta Gojo Variante 1">Agregar al carrito</button>
+              <a id="whatsapp-order" class="btn btn-secondary" href="https://wa.me/50577002788?text=Hola%2C%20quiero%20ordenar%20la%20Camiseta%20Gojo%20Variante%201%20talla%20M" target="_blank" rel="noopener">Ordenar por WhatsApp</a>
+            </div>
+            <p class="hint">Puedes pedir otra talla por WhatsApp si necesitas una medida especial.</p>
+          </div>
         </div>
-        <button class="agregar-carrito" data-producto="Camiseta Gojo Variante 1">Agregar al carrito - C$450</button>
-      </div>
+      </section>
     </div>
   </main>
 
@@ -87,28 +107,32 @@
   <script>
     window.variantesData = {
       1: {
-        img: '/img/Camiseta jjk/gojo1.jpg',
-        titulo: 'Gojo Variante 1',
-        desc: 'VersiÃ³n alternativa para fans del estilo clÃ¡sico.',
-        producto: 'Camiseta Gojo Variante 1'
+        img: '/img/Camiseta jjk/Gojo.png',
+        titulo: 'Satoru Gojo',
+        desc: 'Edición premium inspirado en infinito',
+        producto: 'Satoru Gojo',
+        precio: 'C$450'
       },
       2: {
-        img: '/img/Camiseta jjk/9.jpg',
-        titulo: 'Gojo Variante 2',
-        desc: 'DiseÃ±o inspirador con un aire moderno.',
-        producto: 'Camiseta Gojo Variante 2'
+        img: '/img/Camiseta jjk/Gojo2.png',
+        titulo: 'Satoru Gojo',
+        desc: 'Diseño blanco con estilo minimalista y el sello de Gojo.',
+        producto: 'Satoru Gojo',
+        precio: 'C$450'
       },
       3: {
-        img: '/img/Camiseta jjk/20.jpg',
-        titulo: 'Gojo Variante 3',
-        desc: 'EdiciÃ³n especial para coleccionistas del personaje.',
-        producto: 'Camiseta Gojo Variante 3'
+        img: '/img/Camiseta jjk/Gojo3.png',
+        titulo: 'Satoru Gojo',
+        desc: 'Edición especial para fans que buscan un diseño más atrevido y moderno.',
+        producto: 'Satoru Gojo',
+        precio: 'C$450'
       },
       4: {
-        img: '/img/Camiseta jjk/16.jpg',
-        titulo: 'Gojo Variante 4',
-        desc: 'Modelo urbano con detalles Ãºnicos.',
-        producto: 'Camiseta Gojo Variante 4'
+        img: '/img/Camiseta jjk/Gojo4.png',
+        titulo: 'Satoru Gojo',
+        desc: 'Diseño oscuro con detalles de líneas que resaltan el personaje.',
+        producto: 'Satoru Gojo',
+        precio: 'C$450'
       }
     };
   </script>

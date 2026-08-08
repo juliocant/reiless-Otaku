@@ -1,16 +1,32 @@
 // scripts.js - Funcionalidad básica inicial
 
-// Ejemplo: mostrar alerta al enviar formulario
+// Enviar formularios de contacto a WhatsApp solo en secciones existentes
+function buildWhatsAppFormMessage(form) {
+  const nombre = form.querySelector('input[type="text"]')?.value.trim();
+  const correo = form.querySelector('input[type="email"]')?.value.trim();
+  const mensaje = form.querySelector('textarea')?.value.trim();
+  const partes = [];
+
+  partes.push('Hola, quiero hacer un pedido personalizado.');
+  if (nombre) partes.push(`Mi nombre es ${nombre}.`);
+  if (correo) partes.push(`Mi correo es ${correo}.`);
+  if (mensaje) partes.push(`Detalle: ${mensaje}`);
+  if (!mensaje) partes.push('Por favor, contáctame para coordinar los detalles.');
+
+  return partes.join(' ');
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelector("form");
-  if (form) {
-    form.addEventListener("submit", function (e) {
+  const contactForms = document.querySelectorAll('section#contacto form, section#contacto-tienda form, .contact-card-section form');
+  contactForms.forEach(function (form) {
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
-      alert("¡Gracias por tu mensaje! Te responderemos pronto.");
-      form.reset();
+      const texto = buildWhatsAppFormMessage(form);
+      const url = `https://wa.me/50577002788?text=${encodeURIComponent(texto)}`;
+      window.open(url, '_blank', 'noopener');
     });
-  }
-  
+  });
+
   // Menú hamburguesa: toggle para navegación móvil
   const navToggle = document.getElementById('nav-toggle');
   const nav = document.querySelector('header nav');
@@ -127,10 +143,33 @@ document.addEventListener('DOMContentLoaded', function() {
   const imagenPrincipal = document.getElementById('imagen-principal');
   const tituloPrincipal = document.getElementById('titulo-principal');
   const descripcionPrincipal = document.getElementById('descripcion-principal');
+  const precioPrincipal = document.getElementById('precio-principal');
   const botonAgregar = document.querySelector('.agregar-carrito');
+  const whatsappLink = document.getElementById('whatsapp-order');
+  const tallaSelect = document.getElementById('talla');
+
+  function actualizarWhatsapp(producto, talla) {
+    if (!whatsappLink) return;
+    const tallaTexto = talla ? ` talla ${talla}` : '';
+    const texto = encodeURIComponent(`Hola, quiero ordenar la ${producto}${tallaTexto}`);
+    whatsappLink.href = `https://wa.me/50577002788?text=${texto}`;
+  }
 
   // Datos de variantes - se pueden definir por página o globalmente
   const variantes = window.variantesData || {};
+
+  function aplicarDatos(data) {
+    if (!data) return;
+    if (imagenPrincipal) imagenPrincipal.src = data.img;
+    if (tituloPrincipal) tituloPrincipal.textContent = data.titulo;
+    if (descripcionPrincipal) descripcionPrincipal.textContent = data.desc;
+    if (precioPrincipal) precioPrincipal.textContent = data.precio || '';
+    if (botonAgregar) {
+      botonAgregar.dataset.producto = data.producto;
+      botonAgregar.textContent = data.precio ? `Agregar al carrito - ${data.precio}` : 'Agregar al carrito';
+    }
+    actualizarWhatsapp(data.producto, tallaSelect ? tallaSelect.value : 'M');
+  }
 
   miniaturas.forEach(mini => {
     mini.addEventListener('click', function() {
@@ -138,14 +177,16 @@ document.addEventListener('DOMContentLoaded', function() {
       this.classList.add('activa');
       const variante = this.dataset.variante;
       const data = variantes[variante];
-      if (data) {
-        imagenPrincipal.src = data.img;
-        tituloPrincipal.textContent = data.titulo;
-        descripcionPrincipal.textContent = data.desc;
-        botonAgregar.dataset.producto = data.producto;
-      }
+      aplicarDatos(data);
     });
   });
+
+  if (tallaSelect) {
+    tallaSelect.addEventListener('change', function() {
+      const producto = botonAgregar ? botonAgregar.dataset.producto || tituloPrincipal?.textContent || 'producto' : 'producto';
+      actualizarWhatsapp(producto, this.value);
+    });
+  }
 
   // Seleccionar primera por defecto
   if (miniaturas.length > 0) {

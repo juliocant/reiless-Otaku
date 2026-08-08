@@ -44,29 +44,49 @@
   <button id="cerrar-carrito" aria-label="Cerrar carrito">×</button>
 </aside>
   <main class="productos">
-    <h1>Variantes de Sukuna</h1>
-    <div class="selector-variante">
-      <div class="miniaturas">
-        <img src="https://via.placeholder.com/150x200?text=Sukuna+1" class="miniatura activa" data-variante="1" alt="Sukuna Variante 1">
-        <img src="https://via.placeholder.com/150x200?text=Sukuna+2" class="miniatura" data-variante="2" alt="Sukuna Variante 2">
-        <img src="https://via.placeholder.com/150x200?text=Sukuna+3" class="miniatura" data-variante="3" alt="Sukuna Variante 3">
-        <img src="https://via.placeholder.com/150x200?text=Sukuna+4" class="miniatura" data-variante="4" alt="Sukuna Variante 4">
-      </div>
-      <div class="vista-principal">
-        <img id="imagen-principal" src="https://via.placeholder.com/400x500?text=Sukuna+Variante+1" alt="Sukuna Variante 1">
-        <h2 id="titulo-principal">Sukuna Variante 1</h2>
-        <p id="descripcion-principal">VersiÃ³n oscura con detalles explosivos.</p>
-        <div class="talla-select">
-          <label for="talla">Talla:</label>
-          <select id="talla">
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-          </select>
+    <div class="container">
+      <section class="product-detail">
+        <div class="product-detail-grid">
+          <div class="product-gallery">
+            <div class="gallery-main">
+              <img id="imagen-principal" src="/img/Camiseta jjk/sukuna1.jpg" alt="Camiseta Sukuna Variante 1">
+            </div>
+            <div class="miniaturas">
+              <img src="/img/Camiseta jjk/sukuna1.jpg" class="miniatura activa" data-variante="1" alt="Sukuna Variante 1">
+              <img src="/img/Camiseta jjk/21.jpg" class="miniatura" data-variante="2" alt="Sukuna Variante 2">
+              <img src="/img/Camiseta jjk/20.jpg" class="miniatura" data-variante="3" alt="Sukuna Variante 3">
+              <img src="/img/Camiseta jjk/16.jpg" class="miniatura" data-variante="4" alt="Sukuna Variante 4">
+            </div>
+          </div>
+
+          <div class="product-info">
+            <p class="section-kicker">Jujutsu Kaisen</p>
+            <h1 id="titulo-principal">Variantes de Sukuna</h1>
+            <p class="product-price" id="precio-principal">C$450</p>
+            <p id="descripcion-principal">Versión oscura con detalles explosivos.</p>
+            <ul class="product-features">
+              <li>100% algodón premium</li>
+              <li>Estampado resistente al lavado</li>
+              <li>Corte cómodo y urbano</li>
+              <li>Disponible en tallas S, M, L y XL</li>
+            </ul>
+            <div class="talla-select">
+              <label for="talla">Selecciona talla</label>
+              <select id="talla">
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+              </select>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn btn-primary agregar-carrito" data-producto="Camiseta Sukuna Variante 1">Agregar al carrito - C$450</button>
+              <a id="whatsapp-order" class="btn btn-secondary" href="https://wa.me/50577002788?text=Hola%2C%20quiero%20ordenar%20la%20Camiseta%20Sukuna%20Variante%201%20talla%20M" target="_blank" rel="noopener">Ordenar por WhatsApp</a>
+            </div>
+            <p class="hint">Puedes pedir otra talla por WhatsApp si necesitas una medida especial.</p>
+          </div>
         </div>
-        <button class="agregar-carrito" data-producto="Camiseta Sukuna Variante 1">Agregar al carrito - C$450</button>
-      </div>
+      </section>
     </div>
   </main>
   <footer>
@@ -84,28 +104,32 @@
   <script>
     window.variantesData = {
       1: {
-        img: 'https://via.placeholder.com/400x500?text=Sukuna+Variante+1',
+        img: '/img/Camiseta jjk/sukuna1.jpg',
         titulo: 'Sukuna Variante 1',
-        desc: 'VersiÃ³n oscura con detalles explosivos.',
-        producto: 'Camiseta Sukuna Variante 1'
+        desc: 'Versión oscura con detalles explosivos.',
+        producto: 'Camiseta Sukuna Variante 1',
+        precio: 'C$450'
       },
       2: {
-        img: 'https://via.placeholder.com/400x500?text=Sukuna+Variante+2',
+        img: '/img/Camiseta jjk/21.jpg',
         titulo: 'Sukuna Variante 2',
-        desc: 'DiseÃ±o alternativo con piel y sombras intensas.',
-        producto: 'Camiseta Sukuna Variante 2'
+        desc: 'Diseño alternativo con piel y sombras intensas.',
+        producto: 'Camiseta Sukuna Variante 2',
+        precio: 'C$450'
       },
       3: {
-        img: 'https://via.placeholder.com/400x500?text=Sukuna+Variante+3',
+        img: '/img/Camiseta jjk/20.jpg',
         titulo: 'Sukuna Variante 3',
-        desc: 'EdiciÃ³n especial con aspecto elegante y atrevido.',
-        producto: 'Camiseta Sukuna Variante 3'
+        desc: 'Edición especial con aspecto elegante y atrevido.',
+        producto: 'Camiseta Sukuna Variante 3',
+        precio: 'C$450'
       },
       4: {
-        img: 'https://via.placeholder.com/400x500?text=Sukuna+Variante+4',
+        img: '/img/Camiseta jjk/16.jpg',
         titulo: 'Sukuna Variante 4',
-        desc: 'VersiÃ³n alternativa con diseÃ±o cargado y moderno.',
-        producto: 'Camiseta Sukuna Variante 4'
+        desc: 'Versión alternativa con diseño cargado y moderno.',
+        producto: 'Camiseta Sukuna Variante 4',
+        precio: 'C$450'
       }
     };
   </script>

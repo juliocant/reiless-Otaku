@@ -51,10 +51,10 @@ document.addEventListener("DOMContentLoaded", function () {
   enlacesAgregar.forEach(enlace => {
     enlace.addEventListener("click", function (e) {
       e.preventDefault();
-      const productoEl = this.closest('.producto') || this.closest('.detalle-producto');
+      const productoEl = this.closest('.producto') || this.closest('.detalle-producto') || this.closest('.product-detail') || this.closest('.product-info');
       const nombre = productoEl ? productoEl.querySelector('h3, h1')?.textContent || this.dataset.producto : this.dataset.producto;
       const img = productoEl ? productoEl.querySelector('img')?.src || '' : '';
-      const precioTexto = productoEl ? productoEl.querySelector('span, .precio')?.textContent || '0' : '0';
+      const precioTexto = productoEl ? productoEl.querySelector('.product-price, span, .precio')?.textContent || '0' : '0';
       const precio = parseFloat((precioTexto || '').replace(/[^\d.]/g, '')) || 0;
       const descripcion = productoEl ? productoEl.querySelector('p')?.textContent || '' : '';
       const tallaSelect = productoEl ? productoEl.querySelector('.talla-select') : null;

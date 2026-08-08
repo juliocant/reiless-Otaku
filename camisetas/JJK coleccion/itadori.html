@@ -46,31 +46,50 @@
 </aside>
 
   <main class="productos">
-    <h1>Camiseta de Yuji Itadori</h1>
-    <div class="selector-variante">
-      <div class="miniaturas">
-        <img src="/img/Camiseta jjk/itadori1.jpg" class="miniatura activa" data-variante="1" alt="Itadori Variante 1">
-        <img src="/img/Camiseta jjk/23.jpg" class="miniatura" data-variante="2" alt="Itadori Variante 2">
-        <img src="/img/Camiseta jjk/22.jpg" class="miniatura" data-variante="3" alt="Itadori Variante 3">
-        <img src="/img/Camiseta jjk/4.jpg" class="miniatura" data-variante="4" alt="Itadori Variante 4">
-      </div>
-      <div class="vista-principal">
-        <img id="imagen-principal" src="https://via.placeholder.com/400x500?text=Itadori+Variante+1" alt="Itadori Variante 1">
-        <h2 id="titulo-principal">Elije tu diseÃ±o favorito</h2>
-        <p id="descripcion-principal">VersiÃ³n dinÃ¡mica con energÃ­a juvenil.</p>
-        <div class="talla-select">
-          <label for="talla">Talla:</label>
-          <select id="talla">
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-          </select>
+    <div class="container">
+      <section class="product-detail">
+        <div class="product-detail-grid">
+          <div class="product-gallery">
+            <div class="gallery-main">
+              <img id="imagen-principal" src="/img/Camiseta jjk/itadori1.jpg" alt="Camiseta Itadori">
+            </div>
+            <div class="miniaturas">
+              <img src="/img/Camiseta jjk/itadori1.png" class="miniatura activa" data-variante="1" alt="Itadori">
+              <img src="/img/Camiseta jjk/itadori2.png" class="miniatura" data-variante="2" alt="Itadori">
+              <img src="/img/Camiseta jjk/itadori3.png" class="miniatura" data-variante="3" alt="Itadori">
+              <img src="/img/Camiseta jjk/itadori4.png" class="miniatura" data-variante="4" alt="Itadori">
+            </div>
+          </div>
+
+          <div class="product-info">
+            <p class="section-kicker">Jujutsu Kaisen</p>
+            <h1 id="titulo-principal">Yuji Itadori</h1>
+            <p class="product-price" id="precio-principal">C$450</p>
+            <p id="descripcion-principal">Versión dinámica con energía juvenil.</p>
+            <ul class="product-features">
+              <li>100% algodón premium</li>
+              <li>Estampado resistente al lavado</li>
+              <li>Corte cómodo y urbano</li>
+              <li>Disponible en tallas S, M, L y XL</li>
+            </ul>
+            <div class="talla-select">
+              <label for="talla">Selecciona talla</label>
+              <select id="talla">
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+              </select>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="btn btn-primary agregar-carrito" data-producto="Camiseta Itadori Variante 1">Agregar al carrito - C$450</button>
+              <a id="whatsapp-order" class="btn btn-secondary" href="https://wa.me/50577002788?text=Hola%2C%20quiero%20ordenar%20la%20Camiseta%20Itadori%20Variante%201%20talla%20M" target="_blank" rel="noopener">Ordenar por WhatsApp</a>
+            </div>
+            <p class="hint">Puedes pedir otra talla por WhatsApp si necesitas una medida especial.</p>
+          </div>
         </div>
-        <button class="agregar-carrito" data-producto="Camiseta Itadori Variante 1">Agregar al carrito - C$450</button>
-      </div>
+      </section>
     </div>
-  </main>
   </main>
 
   <footer>
@@ -88,28 +107,32 @@
   <script>
     window.variantesData = {
       1: {
-        img: '/img/Camiseta jjk/itadori1.jpg',
-        titulo: 'Itadori Variante 1',
-        desc: 'VersiÃ³n dinÃ¡mica con energÃ­a juvenil.',
-        producto: 'Camiseta Itadori Variante 1'
+        img: '/img/Camiseta jjk/itadori1.png',
+        titulo: 'Itadori',
+        desc: 'Versión dinámica con energía juvenil.',
+        producto: 'Camiseta Itadori',
+        precio: 'C$450'
       },
       2: {
-        img: '/img/Camiseta jjk/23.jpg',
-        titulo: 'Itadori Variante 2',
+        img: '/img/Camiseta jjk/itadori2.png',
+        titulo: 'Itadori',
         desc: 'Modelo alternativo inspirado en sus mejores batallas.',
-        producto: 'Camiseta Itadori Variante 2'
+        producto: 'Camiseta Itadori',
+        precio: 'C$450'
       },
       3: {
-        img: '/img/Camiseta jjk/22.jpg',
-        titulo: 'Itadori Variante 3',
-        desc: 'EdiciÃ³n especial con detalles Ãºnicos.',
-        producto: 'Camiseta Itadori Variante 3'
+        img: '/img/Camiseta jjk/itadori3.png',
+        titulo: 'Itadori',
+        desc: 'Edición especial con detalles únicos.',
+        producto: 'Camiseta Itadori',
+        precio: 'C$450'
       },
       4: {
-        img: '/img/Camiseta jjk/4.jpg',
-        titulo: 'Itadori Variante 4',
-        desc: 'DiseÃ±o moderno con actitud rebelde.',
-        producto: 'Camiseta Itadori Variante 4'
+        img: '/img/Camiseta jjk/itadori4.png',
+        titulo: 'Itadori',
+        desc: 'Diseño moderno con actitud rebelde.',
+        producto: 'Camiseta Itadori Variante 4',
+        precio: 'C$450'
       }
     };
   </script>
