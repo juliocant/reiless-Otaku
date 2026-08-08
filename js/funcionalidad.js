@@ -17,7 +17,24 @@ document.addEventListener("DOMContentLoaded", function () {
       const nombre = typeof producto === 'string' ? producto : (producto.nombre || 'Producto');
       const cantidad = typeof producto === 'string' ? 1 : (producto.cantidad || 1);
       const talla = (typeof producto === 'object' && producto.talla) ? ` - Talla ${producto.talla}` : '';
-      li.textContent = `${nombre}${talla} (x${cantidad})`;
+      const precio = (typeof producto === 'object' && producto.precio) ? `C$${producto.precio}` : '';
+      const imagen = (typeof producto === 'object' && producto.img) ? producto.img : '';
+
+      if (imagen) {
+        li.className = 'cart-item';
+        li.innerHTML = `
+          <div class="cart-item-content">
+            <img src="${imagen}" alt="${nombre}" class="cart-item-thumb" />
+            <div>
+              <strong>${nombre}</strong>${talla ? `<span class="cart-item-size">${talla}</span>` : ''}
+              ${precio ? `<div class="cart-item-price">${precio}</div>` : ''}
+              <div class="cart-item-quantity">Cantidad: ${cantidad}</div>
+            </div>
+          </div>
+        `;
+      } else {
+        li.textContent = `${nombre}${talla} (x${cantidad})${precio ? ` — ${precio}` : ''}`;
+      }
       listaCarrito.appendChild(li);
     });
     if (contador) contador.textContent = carrito.length;
@@ -51,10 +68,13 @@ document.addEventListener("DOMContentLoaded", function () {
   enlacesAgregar.forEach(enlace => {
     enlace.addEventListener("click", function (e) {
       e.preventDefault();
-      const productoEl = this.closest('.producto') || this.closest('.detalle-producto') || this.closest('.product-detail') || this.closest('.product-info');
+      const productoEl = this.closest('.product-card, .producto, .detalle-producto, .product-detail, .product-info');
       const nombre = this.dataset.producto?.trim() || (productoEl ? productoEl.querySelector('h3, h1')?.textContent?.trim() : 'Producto');
-      const img = productoEl ? productoEl.querySelector('img')?.src || '' : '';
-      const precioTexto = productoEl ? productoEl.querySelector('.product-price, span, .precio')?.textContent || '0' : '0';
+      const img = productoEl ? productoEl.querySelector('.product-img img, img')?.src || '' : '';
+      let precioTexto = productoEl ? productoEl.querySelector('.product-price, .price, .precio, .price-row span, .product-body .price')?.textContent?.trim() : '0';
+      if (!precioTexto) {
+        precioTexto = this.dataset.precio || '0';
+      }
       const precio = parseFloat((precioTexto || '').replace(/[^\d.]/g, '')) || 0;
       const descripcion = productoEl ? productoEl.querySelector('p')?.textContent || '' : '';
       const tallaContainer = productoEl ? productoEl.querySelector('.talla-select') : null;
