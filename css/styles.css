@@ -270,7 +270,7 @@
     @media (max-width: 620px) {
       .header-inner { min-height: 74px; }
       .brand-text { font-size: 1.2rem; }
-      .logo img { width: 118px; }
+      .logo img { width: 78px; }
       .hero { min-height: 620px; }
       .hero-content { padding: 70px 0 100px; }
       .hero h1 { letter-spacing: -2px; }
