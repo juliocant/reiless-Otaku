@@ -87,7 +87,7 @@
       background:
         linear-gradient(90deg, rgba(6,6,8,.98) 0%, rgba(6,6,8,.86) 38%, rgba(6,6,8,.28) 70%),
         url('/img/hero-reiless.webp'),
-        url('/img/Camiseta jjk/Gojo.png');
+        url('/img/Camiseta jjk/Gojo.webp');
       background-size: cover;
       background-position: center right;
       opacity: .96;
@@ -153,7 +153,7 @@
       border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line);
       background:
         linear-gradient(90deg, rgba(6,6,8,.85), rgba(6,6,8,.25)),
-        url('/img/anime-banner.jpg'),
+        url('/img/anime-banner.webp'),
         linear-gradient(135deg, #231032, #0b0b0f 45%, #3d1030);
       background-size: cover; background-position: center;
       padding: 54px; min-height: 310px; display: flex; align-items: center;
