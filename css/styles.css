@@ -54,6 +54,19 @@
       font-size: 1.65rem;
       line-height: .9;
     }
+
+    /* Logo más pequeño en celulares */
+    @media (max-width: 768px) {
+    header .logo img,
+    .logo img {
+        width: auto;
+        height: 38px;
+        max-height: 38px;
+        object-fit: contain;
+              }
+    }
+
+
     .brand-text span { display: block; color: var(--purple-2); font-size: .8rem; letter-spacing: 1.5px; }
     nav ul { display: flex; align-items: center; gap: 30px; list-style: none; }
     nav a { color: #f4f4f8; font-size: 1.50rem; line-height: 1.1; font-weight: 650; opacity: .88; }
