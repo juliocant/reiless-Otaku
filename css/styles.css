@@ -848,3 +848,109 @@ img {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* ===== FASE 4: EXPERIENCIA DE COMPRA ===== */
+header nav a.active,
+header nav a[aria-current="page"] {
+  color: #ffd45c;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 0 0 1.25rem;
+  color: #617080;
+  font-size: .92rem;
+}
+.breadcrumbs a { color: var(--azul-marino); text-decoration: none; font-weight: 700; }
+.breadcrumbs a:hover { text-decoration: underline; }
+
+.catalog-toolbar {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(190px, 260px);
+  gap: 1rem 1.25rem;
+  align-items: end;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.1rem;
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(11,42,66,.12);
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(11,42,66,.07);
+}
+.catalog-search-box label,
+.catalog-sort-box label {
+  display: block;
+  margin-bottom: .4rem;
+  font-size: .82rem;
+  font-weight: 800;
+  color: var(--azul-marino);
+}
+.catalog-search-input-wrap { position: relative; display: flex; align-items: center; }
+.catalog-search-input-wrap > span { position: absolute; left: .9rem; font-size: 1.15rem; pointer-events: none; }
+.catalog-search-input-wrap input,
+.catalog-sort-box select {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid #cad5de;
+  border-radius: 12px;
+  background: #fff;
+  color: #0b2a42;
+  font: inherit;
+}
+.catalog-search-input-wrap input { padding: .7rem 2.7rem .7rem 2.5rem; }
+.catalog-sort-box select { padding: .7rem .8rem; }
+.catalog-search-input-wrap input:focus,
+.catalog-sort-box select:focus { outline: 3px solid rgba(11,42,66,.16); border-color: var(--azul-marino); }
+.catalog-clear {
+  position: absolute;
+  right: .55rem;
+  border: 0;
+  background: transparent;
+  color: #5f6a72;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: .35rem .5rem;
+}
+.catalog-results { grid-column: 1 / -1; margin: -.2rem 0 0; color: #617080; font-size: .9rem; }
+.product-card[hidden], section[hidden] { display: none !important; }
+
+.filters .filter-chip { text-decoration: none; }
+
+#vista-previa-carrito { width: min(390px, calc(100vw - 20px)); }
+#lista-carrito { max-height: min(50vh, 430px); overflow-y: auto; padding-right: .2rem; }
+.cart-item { padding: .75rem 0; border-bottom: 1px solid #e8edf1; }
+.cart-item-content { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: .75rem; align-items: start; }
+.cart-item-thumb { width: 64px; height: 64px; object-fit: cover; border-radius: 10px; background: #f2f4f5; }
+.cart-item-info { min-width: 0; }
+.cart-item-info strong { display: block; line-height: 1.25; }
+.cart-item-size { display: block; color: #65717b; font-size: .82rem; margin-top: .15rem; }
+.cart-item-price { font-weight: 800; margin-top: .2rem; }
+.mini-cart-controls { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; margin-top: .55rem; }
+.mini-cart-qty {
+  width: 28px; height: 28px; border: 1px solid #cad5de; border-radius: 8px;
+  background: #fff; color: var(--azul-marino); cursor: pointer; font-weight: 900;
+}
+.mini-cart-remove { border: 0; background: transparent; color: #a12c2c; cursor: pointer; font-weight: 700; font-size: .78rem; margin-left: .25rem; }
+.mini-cart-summary { display: flex; justify-content: space-between; align-items: center; padding: .9rem 0 .75rem; font-size: 1rem; }
+.mini-cart-summary strong { font-size: 1.15rem; }
+.mini-cart-empty { display: grid; gap: .2rem; text-align: center; padding: 1.1rem .5rem; color: #65717b; }
+.mini-cart-empty strong { color: var(--azul-marino); }
+
+.cart-line-price { font-weight: 800; }
+.cart-page-qty { display: inline-flex; align-items: center; gap: .55rem; }
+.cart-page-qty button {
+  width: 34px; height: 34px; border: 1px solid #cbd5dd; border-radius: 9px;
+  background: #fff; color: var(--azul-marino); font-weight: 900; cursor: pointer;
+}
+.cart-page-qty span { min-width: 1.2rem; text-align: center; font-weight: 800; }
+
+@media (max-width: 700px) {
+  .catalog-toolbar { grid-template-columns: 1fr; margin-left: 1rem; margin-right: 1rem; }
+  .catalog-results { grid-column: auto; }
+  .breadcrumbs { margin-left: .15rem; margin-right: .15rem; }
+  .item-actions { align-items: flex-end; gap: .55rem; }
+}

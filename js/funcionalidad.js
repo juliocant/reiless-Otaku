@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function guardarCarrito(carrito) {
     localStorage.setItem("carrito", JSON.stringify(carrito));
+    window.dispatchEvent(new CustomEvent("carrito:actualizado"));
   }
 
   function normalizarRutaImagen(src) {
@@ -73,33 +74,84 @@ document.addEventListener("DOMContentLoaded", function () {
     listaCarrito.innerHTML = "";
     if (!carrito.length) {
       const vacio = document.createElement("li");
-      vacio.className = "muted";
-      vacio.textContent = "Tu carrito está vacío por ahora.";
+      vacio.className = "mini-cart-empty";
+      vacio.innerHTML = `<strong>Tu carrito está vacío</strong><span>Agrega productos para verlos aquí.</span>`;
       listaCarrito.appendChild(vacio);
-      return;
+    } else {
+      carrito.forEach((producto, index) => {
+        const li = document.createElement("li");
+        const nombre = typeof producto === "string" ? producto : (producto.nombre || "Producto");
+        const cantidad = typeof producto === "string" ? 1 : (Number(producto.cantidad) || 1);
+        const talla = (typeof producto === "object" && producto.talla) ? `Talla ${producto.talla}` : "";
+        const precioNum = (typeof producto === "object" && Number(producto.precio)) ? Number(producto.precio) : 0;
+        const imagen = (typeof producto === "object" && producto.img) ? normalizarRutaImagen(producto.img) : "/img/placeholder.webp";
+
+        li.className = "cart-item";
+        li.innerHTML = `
+          <div class="cart-item-content">
+            <img src="${imagen}" alt="${nombre}" class="cart-item-thumb" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/img/placeholder.webp';">
+            <div class="cart-item-info">
+              <strong>${nombre}</strong>
+              ${talla ? `<span class="cart-item-size">${talla}</span>` : ""}
+              ${precioNum ? `<div class="cart-item-price">C$${precioNum.toFixed(0)}</div>` : ""}
+              <div class="mini-cart-controls" aria-label="Cantidad de ${nombre}">
+                <button type="button" class="mini-cart-qty" data-action="minus" aria-label="Disminuir cantidad">−</button>
+                <span>${cantidad}</span>
+                <button type="button" class="mini-cart-qty" data-action="plus" aria-label="Aumentar cantidad">+</button>
+                <button type="button" class="mini-cart-remove" aria-label="Eliminar ${nombre}">Eliminar</button>
+              </div>
+            </div>
+          </div>`;
+
+        const minus = li.querySelector('[data-action="minus"]');
+        const plus = li.querySelector('[data-action="plus"]');
+        const remove = li.querySelector('.mini-cart-remove');
+        minus.addEventListener('click', () => cambiarCantidad(index, -1));
+        plus.addEventListener('click', () => cambiarCantidad(index, 1));
+        remove.addEventListener('click', () => eliminarDelCarrito(index));
+        listaCarrito.appendChild(li);
+      });
     }
 
-    carrito.forEach(producto => {
-      const li = document.createElement("li");
-      const nombre = typeof producto === "string" ? producto : (producto.nombre || "Producto");
-      const cantidad = typeof producto === "string" ? 1 : (Number(producto.cantidad) || 1);
-      const talla = (typeof producto === "object" && producto.talla) ? `Talla ${producto.talla}` : "";
-      const precio = (typeof producto === "object" && Number(producto.precio)) ? `C$${Number(producto.precio).toFixed(0)}` : "";
-      const imagen = (typeof producto === "object" && producto.img) ? normalizarRutaImagen(producto.img) : "/img/placeholder.webp";
+    let summary = vistaPrevia?.querySelector('.mini-cart-summary');
+    if (!summary && vistaPrevia) {
+      summary = document.createElement('div');
+      summary.className = 'mini-cart-summary';
+      const fullLink = vistaPrevia.querySelector('a[href*="carrito.html"]');
+      if (fullLink) vistaPrevia.insertBefore(summary, fullLink);
+      else vistaPrevia.appendChild(summary);
+    }
+    if (summary) {
+      const subtotal = carrito.reduce((sum, item) => {
+        if (typeof item === 'string') return sum;
+        return sum + (Number(item.precio) || 0) * (Number(item.cantidad) || 1);
+      }, 0);
+      summary.innerHTML = carrito.length
+        ? `<span>Subtotal</span><strong>C$${subtotal.toFixed(0)}</strong>`
+        : '';
+    }
+  }
 
-      li.className = "cart-item";
-      li.innerHTML = `
-        <div class="cart-item-content">
-          <img src="${imagen}" alt="${nombre}" class="cart-item-thumb" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/img/placeholder.webp';">
-          <div>
-            <strong>${nombre}</strong>
-            ${talla ? `<span class="cart-item-size">${talla}</span>` : ""}
-            ${precio ? `<div class="cart-item-price">${precio}</div>` : ""}
-            <div class="cart-item-quantity">Cantidad: ${cantidad}</div>
-          </div>
-        </div>`;
-      listaCarrito.appendChild(li);
-    });
+  function cambiarCantidad(index, delta) {
+    const carrito = leerCarrito();
+    if (!carrito[index]) return;
+    if (typeof carrito[index] === 'string') {
+      if (delta < 0) carrito.splice(index, 1);
+    } else {
+      const actual = Math.max(1, Number(carrito[index].cantidad) || 1);
+      const nueva = actual + delta;
+      if (nueva <= 0) carrito.splice(index, 1);
+      else carrito[index].cantidad = nueva;
+    }
+    guardarCarrito(carrito);
+    actualizarVistaCarrito();
+  }
+
+  function eliminarDelCarrito(index) {
+    const carrito = leerCarrito();
+    carrito.splice(index, 1);
+    guardarCarrito(carrito);
+    actualizarVistaCarrito();
   }
 
   function mostrarAnimacionAgregar(nombreProducto) {
@@ -217,5 +269,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   window.addEventListener("storage", actualizarVistaCarrito);
+  window.addEventListener("carrito:actualizado", actualizarVistaCarrito);
   actualizarVistaCarrito();
 });

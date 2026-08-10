@@ -195,3 +195,120 @@ document.addEventListener('DOMContentLoaded', function() {
     miniaturas[0].click();
   }
 });
+
+
+// ===== FASE 4: EXPERIENCIA DE COMPRA =====
+document.addEventListener('DOMContentLoaded', function () {
+  // Marcar enlace activo de navegación.
+  const currentPath = decodeURIComponent(window.location.pathname).replace(/\/$/, '') || '/index.html';
+  document.querySelectorAll('header nav a').forEach(link => {
+    try {
+      const path = decodeURIComponent(new URL(link.href, window.location.href).pathname).replace(/\/$/, '');
+      if (path === currentPath || (currentPath === '' && path.endsWith('/index.html'))) {
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+      }
+    } catch (_) {}
+  });
+
+  // Breadcrumb en páginas de detalle.
+  const detail = document.querySelector('.product-detail');
+  const detailMain = detail?.closest('main');
+  if (detail && detailMain && !detailMain.querySelector('.breadcrumbs')) {
+    const title = detail.querySelector('h1')?.textContent?.trim() || 'Producto';
+    const crumbs = document.createElement('nav');
+    crumbs.className = 'breadcrumbs';
+    crumbs.setAttribute('aria-label', 'Ruta de navegación');
+    crumbs.innerHTML = `<a href="/tienda.html">Tienda</a><span aria-hidden="true">›</span><a href="/camisetas.html">Camisetas</a><span aria-hidden="true">›</span><span aria-current="page"></span>`;
+    crumbs.querySelector('[aria-current="page"]').textContent = title;
+    detail.parentNode.insertBefore(crumbs, detail);
+  }
+
+  // Buscador + ordenamiento en páginas con catálogo suficiente.
+  const cards = Array.from(document.querySelectorAll('.product-card'));
+  if (cards.length >= 6 && !document.querySelector('.catalog-toolbar')) {
+    const firstGrid = cards[0].closest('.product-grid, .grid-productos');
+    const hostSection = firstGrid?.closest('section');
+    if (firstGrid && hostSection) {
+      const toolbar = document.createElement('div');
+      toolbar.className = 'catalog-toolbar container';
+      toolbar.id = 'catalog-search';
+      toolbar.innerHTML = `
+        <div class="catalog-search-box">
+          <label for="catalog-search-input">Buscar productos</label>
+          <div class="catalog-search-input-wrap">
+            <span aria-hidden="true">⌕</span>
+            <input id="catalog-search-input" type="search" placeholder="Busca por personaje, anime o producto…" autocomplete="off">
+            <button type="button" class="catalog-clear" aria-label="Limpiar búsqueda" hidden>×</button>
+          </div>
+        </div>
+        <div class="catalog-sort-box">
+          <label for="catalog-sort">Ordenar</label>
+          <select id="catalog-sort">
+            <option value="default">Orden original</option>
+            <option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option>
+            <option value="name-asc">Nombre: A–Z</option>
+          </select>
+        </div>
+        <p class="catalog-results" aria-live="polite"></p>`;
+      hostSection.parentNode.insertBefore(toolbar, hostSection);
+
+      const input = toolbar.querySelector('#catalog-search-input');
+      const clearBtn = toolbar.querySelector('.catalog-clear');
+      const sort = toolbar.querySelector('#catalog-sort');
+      const results = toolbar.querySelector('.catalog-results');
+      const managedSections = Array.from(new Set(cards.map(card => card.closest('section')).filter(Boolean)));
+
+      cards.forEach((card, index) => {
+        card.dataset.catalogOrder = String(index);
+        const priceText = card.querySelector('.price, .product-price, .precio, .price-row')?.textContent || '';
+        card.dataset.catalogPrice = String(parseFloat(priceText.replace(/[^\d.]/g, '')) || 0);
+        card.dataset.catalogName = (card.querySelector('h3, h2')?.textContent || '').trim();
+      });
+
+      function updateSections() {
+        managedSections.forEach(section => {
+          const sectionCards = Array.from(section.querySelectorAll('.product-card'));
+          section.hidden = sectionCards.length > 0 && sectionCards.every(card => card.hidden);
+        });
+      }
+
+      function applySearch() {
+        const query = input.value.trim().toLocaleLowerCase('es');
+        let visible = 0;
+        cards.forEach(card => {
+          const haystack = card.textContent.toLocaleLowerCase('es');
+          const match = !query || haystack.includes(query);
+          card.hidden = !match;
+          if (match) visible += 1;
+        });
+        clearBtn.hidden = !query;
+        results.textContent = query
+          ? `${visible} ${visible === 1 ? 'producto encontrado' : 'productos encontrados'}`
+          : `${cards.length} productos disponibles`;
+        updateSections();
+      }
+
+      function applySort() {
+        const mode = sort.value;
+        const grids = Array.from(new Set(cards.map(card => card.closest('.product-grid, .grid-productos')).filter(Boolean)));
+        grids.forEach(grid => {
+          const localCards = Array.from(grid.querySelectorAll(':scope > .product-card'));
+          localCards.sort((a, b) => {
+            if (mode === 'price-asc') return Number(a.dataset.catalogPrice) - Number(b.dataset.catalogPrice);
+            if (mode === 'price-desc') return Number(b.dataset.catalogPrice) - Number(a.dataset.catalogPrice);
+            if (mode === 'name-asc') return a.dataset.catalogName.localeCompare(b.dataset.catalogName, 'es');
+            return Number(a.dataset.catalogOrder) - Number(b.dataset.catalogOrder);
+          });
+          localCards.forEach(card => grid.appendChild(card));
+        });
+      }
+
+      input.addEventListener('input', applySearch);
+      clearBtn.addEventListener('click', () => { input.value = ''; applySearch(); input.focus(); });
+      sort.addEventListener('change', applySort);
+      applySearch();
+    }
+  }
+});

@@ -168,13 +168,18 @@
         const img=document.createElement('img'); img.src=normalizarRutaImagen(item.img); img.alt=item.nombre||'Producto'; img.loading='lazy'; img.decoding='async'; img.onerror=()=>{ img.onerror=null; img.src='/img/placeholder.webp'; };
         const meta=document.createElement('div');
         const name=document.createElement('p'); name.className='item-nombre'; name.textContent=item.nombre||'Producto';
-        const sub=document.createElement('div'); sub.className='item-meta'; sub.textContent='Cantidad: '+(item.cantidad||1)+(item.talla?(' • Talla: '+item.talla):'');
+        const sub=document.createElement('div'); sub.className='item-meta'; sub.textContent=(item.talla?('Talla: '+item.talla):'');
         meta.appendChild(name); meta.appendChild(sub);
         left.appendChild(img); left.appendChild(meta);
         const actions=document.createElement('div'); actions.className='item-actions';
-        const price=document.createElement('div'); price.textContent='C$'+formatPrice(Number(item.precio||0)*(item.cantidad||1)); price.style.fontWeight='700';
+        const price=document.createElement('div'); price.className='cart-line-price'; price.textContent='C$'+formatPrice(Number(item.precio||0)*(item.cantidad||1));
+        const qty=document.createElement('div'); qty.className='cart-page-qty'; qty.setAttribute('aria-label','Cantidad de '+(item.nombre||'producto'));
+        const minus=document.createElement('button'); minus.type='button'; minus.textContent='−'; minus.setAttribute('aria-label','Disminuir cantidad'); minus.addEventListener('click',()=>cambiarCantidadItem(index,-1));
+        const number=document.createElement('span'); number.textContent=String(item.cantidad||1);
+        const plus=document.createElement('button'); plus.type='button'; plus.textContent='+'; plus.setAttribute('aria-label','Aumentar cantidad'); plus.addEventListener('click',()=>cambiarCantidadItem(index,1));
+        qty.appendChild(minus); qty.appendChild(number); qty.appendChild(plus);
         const del=document.createElement('button'); del.className='btn-eliminar'; del.type='button'; del.textContent='Eliminar'; del.addEventListener('click',()=>eliminarItem(index));
-        actions.appendChild(price); actions.appendChild(del);
+        actions.appendChild(price); actions.appendChild(qty); actions.appendChild(del);
         row.appendChild(left); row.appendChild(actions);
         contenedor.appendChild(row);
       });
@@ -182,15 +187,32 @@
       document.getElementById('vaciar-carrito-btn').disabled=false;
       document.getElementById('realizar-pedido-btn').disabled=false;
     }
+    function cambiarCantidadItem(index,delta){
+      const carrito=JSON.parse(localStorage.getItem('carrito'))||[];
+      if(!carrito[index]) return;
+      if(typeof carrito[index]==='string'){
+        if(delta<0) carrito.splice(index,1);
+      }else{
+        const actual=Math.max(1,Number(carrito[index].cantidad)||1);
+        const nueva=actual+delta;
+        if(nueva<=0) carrito.splice(index,1);
+        else carrito[index].cantidad=nueva;
+      }
+      localStorage.setItem('carrito',JSON.stringify(carrito));
+      window.dispatchEvent(new CustomEvent('carrito:actualizado'));
+      renderCarrito();
+    }
     function eliminarItem(index){
       const carrito=JSON.parse(localStorage.getItem('carrito'))||[];
       carrito.splice(index,1);
       localStorage.setItem('carrito',JSON.stringify(carrito));
+      window.dispatchEvent(new CustomEvent('carrito:actualizado'));
       renderCarrito();
     }
     function vaciarCarrito(){
       if(!confirm('¿Seguro que quieres vaciar el carrito?')) return;
       localStorage.setItem('carrito', JSON.stringify([]));
+      window.dispatchEvent(new CustomEvent('carrito:actualizado'));
       renderCarrito();
     }
     function realizarPedido(){
