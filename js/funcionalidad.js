@@ -22,6 +22,42 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }
 
+  function normalizarRutaImagen(src) {
+    if (!src) return "/img/placeholder.webp";
+    const valor = String(src).trim();
+    if (!valor) return "/img/placeholder.webp";
+
+    // Convierte URLs absolutas o rutas file:// antiguas a una ruta estable /img/...
+    try {
+      const url = new URL(valor, document.baseURI);
+      const pathname = decodeURIComponent(url.pathname || "");
+      const indiceImg = pathname.toLowerCase().lastIndexOf("/img/");
+      if (indiceImg >= 0) return pathname.slice(indiceImg);
+      if (url.origin === window.location.origin) return pathname || valor;
+    } catch (_) {}
+
+    const normalizado = valor.replace(/\\/g, "/");
+    const indice = normalizado.toLowerCase().lastIndexOf("/img/");
+    if (indice >= 0) return normalizado.slice(indice);
+    return valor;
+  }
+
+  function obtenerImagenProducto(boton, productoEl) {
+    // En páginas con variantes, scripts.js mantiene data-img sincronizado.
+    if (boton?.dataset?.img) return normalizarRutaImagen(boton.dataset.img);
+
+    let imagenEl = productoEl?.querySelector?.(".product-img img, #imagen-principal, .gallery-main img, img");
+
+    // En páginas de detalle el botón vive en .product-info y la galería es su hermana.
+    if (!imagenEl) {
+      const detalle = boton?.closest?.(".product-detail, .detalle-producto, .product-detail-grid");
+      imagenEl = detalle?.querySelector?.("#imagen-principal, .gallery-main img, .product-gallery img, img");
+    }
+
+    const src = imagenEl?.getAttribute?.("src") || imagenEl?.currentSrc || imagenEl?.src;
+    return normalizarRutaImagen(src);
+  }
+
   function cantidadTotal(carrito) {
     return carrito.reduce((total, item) => {
       if (typeof item === "string") return total + 1;
@@ -49,12 +85,12 @@ document.addEventListener("DOMContentLoaded", function () {
       const cantidad = typeof producto === "string" ? 1 : (Number(producto.cantidad) || 1);
       const talla = (typeof producto === "object" && producto.talla) ? `Talla ${producto.talla}` : "";
       const precio = (typeof producto === "object" && Number(producto.precio)) ? `C$${Number(producto.precio).toFixed(0)}` : "";
-      const imagen = (typeof producto === "object" && producto.img) ? producto.img : "/img/placeholder.webp";
+      const imagen = (typeof producto === "object" && producto.img) ? normalizarRutaImagen(producto.img) : "/img/placeholder.webp";
 
       li.className = "cart-item";
       li.innerHTML = `
         <div class="cart-item-content">
-          <img src="${imagen}" alt="" class="cart-item-thumb" loading="lazy" decoding="async">
+          <img src="${imagen}" alt="${nombre}" class="cart-item-thumb" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/img/placeholder.webp';">
           <div>
             <strong>${nombre}</strong>
             ${talla ? `<span class="cart-item-size">${talla}</span>` : ""}
@@ -74,31 +110,13 @@ document.addEventListener("DOMContentLoaded", function () {
     notificacion.className = "cart-toast";
     notificacion.setAttribute("role", "status");
     notificacion.textContent = `✓ ${nombreProducto} añadido al carrito`;
-    Object.assign(notificacion.style, {
-      position: "fixed",
-      top: "92px",
-      right: "20px",
-      background: "linear-gradient(135deg,#8b3dff,#b14cff)",
-      color: "#fff",
-      padding: "12px 18px",
-      borderRadius: "12px",
-      boxShadow: "0 16px 35px rgba(0,0,0,.35)",
-      zIndex: "2000",
-      opacity: "0",
-      transform: "translateY(-8px)",
-      transition: "opacity .2s ease, transform .2s ease",
-      fontWeight: "800",
-      maxWidth: "min(360px,calc(100vw - 40px))"
-    });
 
     document.body.appendChild(notificacion);
     requestAnimationFrame(() => {
-      notificacion.style.opacity = "1";
-      notificacion.style.transform = "translateY(0)";
+      notificacion.classList.add("show");
     });
     setTimeout(() => {
-      notificacion.style.opacity = "0";
-      notificacion.style.transform = "translateY(-8px)";
+      notificacion.classList.remove("show");
       setTimeout(() => notificacion.remove(), 250);
     }, 1900);
   }
@@ -112,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
         productoEl?.querySelector("h3, h1")?.textContent?.trim() ||
         "Producto";
 
-      const img = productoEl?.querySelector(".product-img img, img")?.src || "/img/placeholder.webp";
+      const img = obtenerImagenProducto(this, productoEl);
       let precioTexto =
         productoEl?.querySelector(".product-price, .price, .precio, .price-row span, .product-body .price")?.textContent?.trim() ||
         this.dataset.precio ||

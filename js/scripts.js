@@ -166,6 +166,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (precioPrincipal) precioPrincipal.textContent = data.precio || '';
     if (botonAgregar) {
       botonAgregar.dataset.producto = data.producto;
+      botonAgregar.dataset.img = data.img || '';
+      botonAgregar.dataset.precio = data.precio || '';
       botonAgregar.textContent = data.precio ? `Agregar al carrito - ${data.precio}` : 'Agregar al carrito';
     }
     actualizarWhatsapp(data.producto, tallaSelect ? tallaSelect.value : 'M');

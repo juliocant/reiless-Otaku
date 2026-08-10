@@ -3,3 +3,8 @@ img.zip
 __pycache__/
 *.pyc
 .DS_Store
+*.zip
+venv/
+*.py[cod]
+.vscode/
+Thumbs.db

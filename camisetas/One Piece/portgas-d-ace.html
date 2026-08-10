@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -7,8 +7,10 @@
   <meta name="description" content="Camiseta Portgas D Ace | Reiless. Camisetas y productos otaku disponibles en Reiless, Nicaragua.">
 
   <link rel="icon" href="/img/logo.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css" />
-<link rel="stylesheet" href="/css/tienda.css" />
 
   <meta property="og:title" content="Camiseta Portgas D Ace | Reiless">
   <meta property="og:description" content="Camiseta Portgas D Ace | Reiless. Camisetas y productos otaku disponibles en Reiless, Nicaragua.">
@@ -22,8 +24,8 @@
   <header>
   <div class="container header-inner">
     <a href="/index.html" class="logo" aria-label="Inicio Reiless Otaku">
-      <img src="/img/logo.webp" alt="Reiless Otaku Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';" decoding="async" loading="eager" fetchpriority="high">
-      <div class="brand-text" style="display:none;">REILESS <span>OTAKU オタク</span></div>
+      <img src="/img/logo.webp" alt="Reiless Otaku Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';" decoding="async" loading="eager" fetchpriority="high" width="532" height="531">
+      <div class="brand-text brand-text-fallback">REILESS <span>OTAKU オタク</span></div>
     </a>
 
     <button id="nav-toggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
@@ -60,13 +62,13 @@
         <div class="product-detail-grid">
           <div class="product-gallery">
             <div class="gallery-main">
-              <img loading="lazy" id="imagen-principal" src="/img/Camisetas one Piece/Portgas D Ace/Portgas D Ace.webp" alt="Camiseta Portgas D Ace Variante 1" decoding="async">
+              <img loading="eager" fetchpriority="high" id="imagen-principal" src="/img/Camisetas one Piece/Portgas D Ace/Portgas D Ace.webp" alt="Camiseta Portgas D Ace Variante 1" decoding="async" width="1080" height="1080">
             </div>
             <div class="miniaturas">
-              <img loading="lazy" src="/img/Camisetas one Piece/Portgas D Ace/27.webp" class="miniatura activa" data-variante="1" alt="Portgas D Ace Variante 1" decoding="async">
-              <img loading="lazy" src="/img/Camisetas one Piece/Portgas D Ace/36.webp" class="miniatura" data-variante="2" alt="Portgas D Ace Variante 2" decoding="async">
-              <img loading="lazy" src="/img/Camisetas one Piece/Portgas D Ace/38.webp" class="miniatura" data-variante="3" alt="Portgas D Ace Variante 3" decoding="async">
-              <img loading="lazy" src="/img/Camisetas one Piece/Portgas D Ace/40.webp" class="miniatura" data-variante="4" alt="Portgas D Ace Variante 4" decoding="async">
+              <img loading="lazy" src="/img/Camisetas one Piece/Portgas D Ace/27.webp" class="miniatura activa" data-variante="1" alt="Portgas D Ace Variante 1" decoding="async" width="1080" height="1080">
+              <img loading="lazy" src="/img/Camisetas one Piece/Portgas D Ace/36.webp" class="miniatura" data-variante="2" alt="Portgas D Ace Variante 2" decoding="async" width="1080" height="1080">
+              <img loading="lazy" src="/img/Camisetas one Piece/Portgas D Ace/38.webp" class="miniatura" data-variante="3" alt="Portgas D Ace Variante 3" decoding="async" width="1080" height="1080">
+              <img loading="lazy" src="/img/Camisetas one Piece/Portgas D Ace/40.webp" class="miniatura" data-variante="4" alt="Portgas D Ace Variante 4" decoding="async" width="1080" height="1080">
             </div>
           </div>
 
@@ -104,7 +106,7 @@
   <footer>
   <div class="container footer-grid">
     <div>
-      <a href="/index.html" class="logo"><img loading="lazy" src="/img/logo.webp" alt="Reiless Otaku Logo" decoding="async" /></a>
+      <a href="/index.html" class="logo"><img loading="lazy" src="/img/logo.webp" alt="Reiless Otaku Logo" decoding="async" width="532" height="531"></a>
       <p>Anime, camisetas, tazas, hoodies, impresión 3D y productos personalizados en Nicaragua.</p>
       <div class="socials"><a href="https://instagram.com/reiless.ni" target="_blank" rel="noopener">IG</a><a href="https://wa.me/50577002788" target="_blank" rel="noopener">WA</a></div>
     </div>
@@ -146,8 +148,8 @@
       }
     };
   </script>
-  <script src="/js/scripts.js"></script>
-  <script src="/js/funcionalidad.js"></script>
+  <script src="/js/scripts.js" defer></script>
+  <script src="/js/funcionalidad.js" defer></script>
 </body>
 </html>
 
