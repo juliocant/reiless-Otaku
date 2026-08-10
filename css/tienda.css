@@ -393,7 +393,7 @@ body.shop-page select option {
   border-radius: var(--radius);
   background:
     linear-gradient(90deg, rgba(5,8,12,.9), rgba(5,8,12,.45)),
-    url('/img/anime-banner.jpg'),
+    url('/img/anime-banner.webp'),
     linear-gradient(135deg, #0b2a42, #07111a 60%, #0f4f7a);
   background-size: cover;
   background-position: center;
