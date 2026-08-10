@@ -1,0 +1,16 @@
+{
+  "name": "Reiless Otaku",
+  "short_name": "Reiless",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0b2a42",
+  "lang": "es-NI",
+  "icons": [
+    {
+      "src": "/img/logo.webp",
+      "sizes": "any",
+      "type": "image/webp"
+    }
+  ]
+}
