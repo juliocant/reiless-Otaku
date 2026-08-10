@@ -54,7 +54,7 @@
       font-size: 1.65rem;
       line-height: .9;
     }
-
+    
     /* Logo más pequeño en celulares */
     @media (max-width: 768px) {
     header .logo img,
@@ -64,7 +64,7 @@
         max-height: 38px;
         object-fit: contain;
               }
-    }
+      }
 
 
     .brand-text span { display: block; color: var(--purple-2); font-size: .8rem; letter-spacing: 1.5px; }
@@ -113,9 +113,9 @@
       content: ""; position: absolute; inset: auto 0 0 0; height: 220px;
       background: linear-gradient(transparent, var(--bg));
     }
-    .hero-content { position: relative; z-index: 2; max-width: 660px; padding: 90px 0 120px; }
+    .hero-content { position: relative; z-index: 2; max-width: 660px; padding: 150px 0 120px; }
     .eyebrow { color: var(--purple-2); font-weight: 900; letter-spacing: 2px; font-size: .86rem; text-transform: uppercase; }
-    .hero h1 { margin: 18px 0; font-size: clamp(3.2rem, 7vw, 6.6rem); line-height: .92; letter-spacing: -4px; text-transform: uppercase; }
+    .hero h1 { margin: 5px 0; font-size: clamp(3.2rem, 7vw, 6.6rem); line-height: .92; letter-spacing: -4px; text-transform: uppercase; }
     .hero h1 span {
       display: inline-block; color: var(--purple-2); font-style: italic;
       text-shadow: 0 0 35px rgba(177,76,255,.42);
