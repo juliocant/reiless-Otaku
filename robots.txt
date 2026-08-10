@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /carrito.html
-Sitemap: https://www.reilessshirt.com/sitemap.xml
+Sitemap: https://reilessotaku.com/sitemap.xml
